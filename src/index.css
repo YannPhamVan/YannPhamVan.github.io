@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +10,22 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Portfolio Design System */
+    --navy: 214 68% 14%;          /* #0B1F3A */
+    --navy-foreground: 0 0% 100%;
+
+    --performance-blue: 224 82% 48%;   /* #1D4ED8 */
+    --performance-blue-foreground: 0 0% 100%;
+
+    --performance-green: 160 91% 30%;  /* #059669 */
+    --performance-green-foreground: 0 0% 100%;
+
+    --surface: 210 40% 96%;       /* #F1F5F9 */
+    --surface-foreground: 215 28% 17%; /* #1E293B */
+
+    /* Shadcn tokens */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 28% 17%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
