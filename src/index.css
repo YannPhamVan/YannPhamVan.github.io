@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +10,22 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Portfolio Design System */
+    --navy: 214 68% 14%;          /* #0B1F3A */
+    --navy-foreground: 0 0% 100%;
+
+    --performance-blue: 224 82% 48%;   /* #1D4ED8 */
+    --performance-blue-foreground: 0 0% 100%;
+
+    --performance-green: 160 91% 30%;  /* #059669 */
+    --performance-green-foreground: 0 0% 100%;
+
+    --surface: 210 40% 96%;       /* #F1F5F9 */
+    --surface-foreground: 215 28% 17%; /* #1E293B */
+
+    /* Shadcn tokens */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 215 28% 17%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -101,5 +117,59 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section-navy {
+    background-color: hsl(var(--navy));
+    color: hsl(var(--navy-foreground));
+  }
+
+  .section-surface {
+    background-color: hsl(var(--surface));
+    color: hsl(var(--surface-foreground));
+  }
+
+  .text-perf-green {
+    color: hsl(var(--performance-green));
+  }
+
+  .text-perf-blue {
+    color: hsl(var(--performance-blue));
+  }
+
+  .bg-perf-blue {
+    background-color: hsl(var(--performance-blue));
+    color: hsl(var(--performance-blue-foreground));
+  }
+
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+}
 }

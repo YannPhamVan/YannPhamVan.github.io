@@ -14,6 +14,22 @@ export default {
     },
     extend: {
       colors: {
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          foreground: "hsl(var(--navy-foreground))",
+        },
+        "perf-blue": {
+          DEFAULT: "hsl(var(--performance-blue))",
+          foreground: "hsl(var(--performance-blue-foreground))",
+        },
+        "perf-green": {
+          DEFAULT: "hsl(var(--performance-green))",
+          foreground: "hsl(var(--performance-green-foreground))",
+        },
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
