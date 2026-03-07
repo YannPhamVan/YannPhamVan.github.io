@@ -59,6 +59,7 @@ export default function ProblematiquesSection() {
                   {p.title}
                 </h3>
                 <p className="text-base text-muted-foreground leading-relaxed">{p.desc}</p>
+
               </div>
             );
           })}
