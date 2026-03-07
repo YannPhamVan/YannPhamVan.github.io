@@ -55,10 +55,10 @@ export default function ProblematiquesSection() {
                 >
                   <Icon size={22} style={{ color: "hsl(var(--performance-blue))" }} />
                 </div>
-                <h3 className="font-semibold text-sm mb-2 leading-snug" style={{ color: "hsl(var(--navy))" }}>
+                <h3 className="font-semibold text-base mb-2 leading-snug" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             );
           })}

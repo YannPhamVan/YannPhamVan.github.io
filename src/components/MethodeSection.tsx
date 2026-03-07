@@ -88,7 +88,7 @@ export default function MethodeSection() {
                   >
                     {step.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                 </div>
               );
             })}
