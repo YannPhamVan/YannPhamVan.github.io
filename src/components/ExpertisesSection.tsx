@@ -60,7 +60,7 @@ export default function ExpertisesSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "hsl(var(--navy))" }}>
             Des compétences directement applicables à vos enjeux
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base">
+          <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
             Chaque domaine d'expertise est ancré dans des cas d'usage réels et orienté vers des résultats business concrets.
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function ExpertisesSection() {
 
                 {/* Card body */}
                 <div className="p-6 flex flex-col flex-1 bg-white">
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{ex.desc}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed mb-5">{ex.desc}</p>
 
                   {/* Tech tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -113,7 +113,7 @@ export default function ExpertisesSection() {
                     </p>
                     <ul className="space-y-1.5">
                       {ex.impact.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm">
+                        <li key={item} className="flex items-start gap-2 text-base">
                           <span
                             className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
                             style={{ backgroundColor: "hsl(var(--performance-green))" }}

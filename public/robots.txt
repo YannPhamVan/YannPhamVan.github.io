@@ -1,8 +1,12 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /mentions-legales
+Disallow: /politique-confidentialite
 
 User-agent: Bingbot
 Allow: /
+Disallow: /mentions-legales
+Disallow: /politique-confidentialite
 
 User-agent: Twitterbot
 Allow: /
@@ -15,5 +19,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /mentions-legales
+Disallow: /politique-confidentialite
 
 Sitemap: https://yannphamvan.lovable.app/sitemap.xml
