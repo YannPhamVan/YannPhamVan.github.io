@@ -54,7 +54,7 @@ export default function ProjetsSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "hsl(var(--navy))" }}>
             De la modélisation à la valeur en production
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base">
+          <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
             Chaque projet illustre un cycle complet : compréhension du besoin, modélisation rigoureuse et déploiement opérationnel.
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function ProjetsSection() {
                 <h3 className="font-bold text-base leading-snug mb-1.5" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">{p.context}</p>
+                <p className="text-base text-muted-foreground">{p.context}</p>
               </div>
 
               {/* Problem / Solution */}
@@ -114,13 +114,13 @@ export default function ProjetsSection() {
                   <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
                     Problème métier
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.problem}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{p.problem}</p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
                     Solution
                   </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.solution}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{p.solution}</p>
                 </div>
               </div>
 
@@ -134,7 +134,7 @@ export default function ProjetsSection() {
                     <p className="text-lg font-bold" style={{ color: "hsl(var(--performance-green))" }}>
                       {m.value}
                     </p>
-                    <p className="text-xs text-muted-foreground leading-tight">{m.label}</p>
+                    <p className="text-sm text-muted-foreground leading-tight">{m.label}</p>
                   </div>
                 ))}
               </div>

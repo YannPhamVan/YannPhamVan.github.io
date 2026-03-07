@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const quickLinks = [
@@ -30,6 +30,16 @@ export default function Footer() {
                 aria-label="LinkedIn"
               >
                 <Linkedin size={17} className="text-white" />
+              </a>
+              <a
+                href="https://github.com/YannPhamVan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/10"
+                style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
+                aria-label="GitHub"
+              >
+                <Github size={17} className="text-white" />
               </a>
               <a
                 href="#contact"

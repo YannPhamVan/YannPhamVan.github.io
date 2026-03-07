@@ -51,7 +51,7 @@ export default function MethodeSection() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "hsl(var(--navy))" }}>
             Un cycle complet, de la donnée à la valeur
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-base">
+          <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
             Une approche structurée qui garantit la fiabilité des livrables et la création de valeur dès les premières semaines.
           </p>
         </div>
@@ -83,12 +83,12 @@ export default function MethodeSection() {
                   </span>
 
                   <h3
-                    className="font-semibold text-sm mb-1.5 leading-snug"
+                    className="font-semibold text-base mb-1.5 leading-snug"
                     style={{ color: "hsl(var(--navy))" }}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed">{step.desc}</p>
                 </div>
               );
             })}
@@ -104,7 +104,7 @@ export default function MethodeSection() {
               borderColor: "hsl(var(--border))",
             }}
           >
-            <p className="text-sm font-medium" style={{ color: "hsl(var(--surface-foreground))" }}>
+            <p className="text-base font-medium" style={{ color: "hsl(var(--surface-foreground))" }}>
               Chaque engagement inclut une{" "}
               <strong style={{ color: "hsl(var(--navy))" }}>documentation complète</strong> et un{" "}
               <strong style={{ color: "hsl(var(--navy))" }}>transfert de compétences</strong> aux équipes internes.
