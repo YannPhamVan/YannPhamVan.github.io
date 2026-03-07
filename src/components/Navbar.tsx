@@ -28,10 +28,10 @@ export default function Navbar() {
         {/* Logo / Name */}
         <a href="#hero" className="flex flex-col leading-tight">
           <span className="font-bold text-lg" style={{ color: "hsl(var(--navy))" }}>
-            Alexandre Dupont
+            Yann Pham-Van
           </span>
           <span className="text-xs font-medium" style={{ color: "hsl(var(--performance-blue))" }}>
-            Data Scientist · ML & Risques
+            Data Scientist · Scoring & Anomalies
           </span>
         </a>
 

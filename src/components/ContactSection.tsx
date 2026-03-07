@@ -24,40 +24,40 @@ export default function ContactSection() {
               Contact
             </p>
             <h2 className="text-3xl md:text-4xl font-bold mb-5" style={{ color: "hsl(var(--navy))" }}>
-              Parlons de vos enjeux
+              Parlons de votre problématique
             </h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              Chaque projet commence par une conversation. Décrivez votre contexte et vos objectifs —
-              je vous reviens rapidement avec une première analyse.
+            <p className="text-muted-foreground mb-8 leading-relaxed text-base">
+              Vous souhaitez exploiter vos données pour mieux anticiper les risques ou améliorer vos décisions ?{" "}
+              Décrivez-moi votre contexte et je vous répondrai rapidement.
             </p>
 
             {/* Trust signals */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
                   <Clock size={18} style={{ color: "hsl(var(--performance-green))" }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm" style={{ color: "hsl(var(--navy))" }}>Réponse sous 24h</p>
-                  <p className="text-xs text-muted-foreground">En jours ouvrés</p>
+                  <p className="font-semibold text-base" style={{ color: "hsl(var(--navy))" }}>Réponse sous 24h</p>
+                  <p className="text-sm text-muted-foreground">En jours ouvrés</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
                   <Lock size={18} style={{ color: "hsl(var(--performance-green))" }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm" style={{ color: "hsl(var(--navy))" }}>Confidentialité garantie</p>
-                  <p className="text-xs text-muted-foreground">NDA disponible sur demande</p>
+                  <p className="font-semibold text-base" style={{ color: "hsl(var(--navy))" }}>Confidentialité garantie</p>
+                  <p className="text-sm text-muted-foreground">NDA disponible sur demande</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(var(--performance-green) / 0.1)" }}>
                   <Send size={18} style={{ color: "hsl(var(--performance-green))" }} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm" style={{ color: "hsl(var(--navy))" }}>Premier échange sans engagement</p>
-                  <p className="text-xs text-muted-foreground">Diagnostic de faisabilité gratuit</p>
+                  <p className="font-semibold text-base" style={{ color: "hsl(var(--navy))" }}>Premier échange sans engagement</p>
+                  <p className="text-sm text-muted-foreground">Diagnostic de faisabilité gratuit</p>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 <h3 className="font-bold text-lg mb-2" style={{ color: "hsl(var(--navy))" }}>
                   Message envoyé !
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-base">
                   Merci pour votre message. Je vous contacterai dans les 24h.
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default function ContactSection() {
                       value={form.nom}
                       onChange={handleChange}
                       placeholder="Jean Martin"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
                     />
                   </div>
                   <div>
@@ -108,7 +108,7 @@ export default function ContactSection() {
                       value={form.societe}
                       onChange={handleChange}
                       placeholder="Votre entreprise"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
                     />
                   </div>
                 </div>
@@ -124,13 +124,13 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="j.martin@entreprise.fr"
-                    className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                    className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-1.5" style={{ color: "hsl(var(--navy))" }}>
-                    Décrivez vos enjeux <span className="text-red-500">*</span>
+                    Décrivez votre problématique <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -139,19 +139,19 @@ export default function ContactSection() {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="Contexte de votre projet, problématique principale, périmètre envisagé, délais…"
-                    className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition resize-none"
+                    className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-perf-blue text-white font-semibold py-3 px-6 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-sm"
+                  className="w-full bg-perf-blue text-white font-semibold py-3.5 px-6 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-base"
                 >
                   <Send size={16} />
-                  Envoyer le message
+                  Échanger sur votre projet
                 </button>
 
-                <p className="text-xs text-center text-muted-foreground">
+                <p className="text-sm text-center text-muted-foreground">
                   Vos données sont traitées de manière confidentielle et ne sont jamais partagées.
                 </p>
               </form>

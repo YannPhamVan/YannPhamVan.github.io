@@ -1,41 +1,44 @@
-import { CheckCircle2, ExternalLink } from "lucide-react";
+import { CheckCircle2, FlaskConical } from "lucide-react";
 
 const projects = [
   {
+    badge: "real",
     category: "Scoring & Risque",
     title: "API de scoring crédit déployée en production",
     context: "Établissement de crédit à la consommation — portefeuille de 50 000 dossiers/mois",
-    metrics: [
+    problem: "L'évaluation du risque reposait sur des règles statiques, générant trop de refus injustifiés et des défauts non anticipés.",
+    solution: "Modèle XGBoost calibré avec feature engineering comportemental, interprétabilité SHAP et exposition via API REST FastAPI dockerisée.",
+    impact: [
       { label: "Réduction des défauts", value: "−35%" },
       { label: "Précision du modèle (AUC)", value: "0.91" },
     ],
-    methodologie: "Collecte et enrichissement des données comportementales, feature engineering, modèle XGBoost avec calibration, interprétabilité SHAP, API REST FastAPI dockerisée.",
     stack: ["Python", "XGBoost", "SHAP", "FastAPI", "Docker", "PostgreSQL"],
-    production: true,
   },
   {
+    badge: "real",
     category: "Détection d'anomalies",
     title: "Système de détection d'anomalies financières",
     context: "Groupe industriel — surveillance des transactions inter-entités en temps quasi-réel",
-    metrics: [
+    problem: "Les fraudes et irrégularités n'étaient détectées qu'après clôture comptable, avec un taux de faux positifs élevé paralysant les équipes.",
+    solution: "Pipeline hybride supervisé/non supervisé (Isolation Forest + LSTM) avec streaming Kafka et système d'alerte paramétrable par les métiers.",
+    impact: [
       { label: "Fraudes détectées (rappel)", value: "+42%" },
       { label: "Faux positifs réduits", value: "−60%" },
     ],
-    methodologie: "Analyse exploratoire des patterns transactionnels, modèles hybrides supervisés/non supervisés (Isolation Forest + LSTM), pipeline de streaming et système d'alerte.",
     stack: ["Python", "Isolation Forest", "LSTM", "Kafka", "Elasticsearch"],
-    production: true,
   },
   {
+    badge: "demo",
     category: "MLOps",
     title: "Pipeline ML industrialisé avec monitoring continu",
     context: "Fintech — modèles de scoring en production avec supervision et retraining automatisé",
-    metrics: [
+    problem: "Les modèles dérivaient silencieusement sans détection, nécessitant des interventions manuelles coûteuses et des indisponibilités non planifiées.",
+    solution: "Mise en place de MLflow, pipeline CI/CD GitHub Actions, monitoring Grafana avec détection automatique du data drift et retraining déclenché par seuils.",
+    impact: [
       { label: "Disponibilité du système", value: "99.8%" },
       { label: "Temps de retraining", value: "< 2h" },
     ],
-    methodologie: "Mise en place de MLflow pour le tracking d'expériences, pipeline CI/CD, monitoring des métriques et détection du data drift, retraining automatisé avec validation avant déploiement.",
     stack: ["MLflow", "Airflow", "Docker", "Grafana", "GitHub Actions"],
-    production: true,
   },
 ];
 
@@ -75,7 +78,7 @@ export default function ProjetsSection() {
                   >
                     {p.category}
                   </span>
-                  {p.production && (
+                  {p.badge === "real" ? (
                     <span
                       className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
                       style={{
@@ -84,14 +87,41 @@ export default function ProjetsSection() {
                       }}
                     >
                       <CheckCircle2 size={12} />
-                      En production
+                      Projet réel
+                    </span>
+                  ) : (
+                    <span
+                      className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
+                      style={{
+                        backgroundColor: "hsl(var(--performance-blue) / 0.08)",
+                        color: "hsl(var(--performance-blue))",
+                      }}
+                    >
+                      <FlaskConical size={12} />
+                      Démo avancée
                     </span>
                   )}
                 </div>
-                <h3 className="font-bold text-base leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
+                <h3 className="font-bold text-base leading-snug mb-1.5" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
-                <p className="text-xs text-muted-foreground">{p.context}</p>
+                <p className="text-sm text-muted-foreground">{p.context}</p>
+              </div>
+
+              {/* Problem / Solution */}
+              <div className="px-6 mb-4 flex-1 space-y-3">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
+                    Problème métier
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.problem}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
+                    Solution
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.solution}</p>
+                </div>
               </div>
 
               {/* Metrics */}
@@ -99,7 +129,7 @@ export default function ProjetsSection() {
                 className="mx-6 rounded-lg px-4 py-3 grid grid-cols-2 gap-3 mb-4"
                 style={{ backgroundColor: "hsl(var(--surface))" }}
               >
-                {p.metrics.map((m) => (
+                {p.impact.map((m) => (
                   <div key={m.label}>
                     <p className="text-lg font-bold" style={{ color: "hsl(var(--performance-green))" }}>
                       {m.value}
@@ -107,14 +137,6 @@ export default function ProjetsSection() {
                     <p className="text-xs text-muted-foreground leading-tight">{m.label}</p>
                   </div>
                 ))}
-              </div>
-
-              {/* Methodology */}
-              <div className="px-6 mb-4 flex-1">
-                <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "hsl(var(--navy))" }}>
-                  Méthodologie
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.methodologie}</p>
               </div>
 
               {/* Stack tags */}
