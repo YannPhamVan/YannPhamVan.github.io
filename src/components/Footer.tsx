@@ -1,4 +1,5 @@
 import { Linkedin, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const quickLinks = [
   { label: "Expertises", href: "#expertises" },
@@ -14,14 +15,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div>
-            <p className="font-bold text-white text-lg mb-1">Alexandre Dupont</p>
+            <p className="font-bold text-white text-lg mb-1">Yann Pham-Van</p>
             <p className="text-sm mb-4" style={{ color: "hsl(var(--navy-foreground) / 0.55)" }}>
               Data Scientist Freelance<br />
-              Machine Learning · Finance & Industrie
+              Scoring · Détection d'anomalies · Prévisions · MLOps
             </p>
             <div className="flex gap-3">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/chasseur2valeurs/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/10"
@@ -79,8 +80,15 @@ export default function Footer() {
           className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
           style={{ borderColor: "hsl(var(--navy-foreground) / 0.1)", color: "hsl(var(--navy-foreground) / 0.4)" }}
         >
-          <p>© {new Date().getFullYear()} Alexandre Dupont — Data Scientist Freelance. Tous droits réservés.</p>
-          <p>Mentions légales · Politique de confidentialité</p>
+          <p>© {new Date().getFullYear()} Yann Pham-Van — Data Scientist Freelance. Tous droits réservés.</p>
+          <div className="flex gap-4">
+            <Link to="/mentions-legales" className="hover:text-white transition-colors">
+              Mentions légales
+            </Link>
+            <Link to="/politique-confidentialite" className="hover:text-white transition-colors">
+              Politique de confidentialité
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
