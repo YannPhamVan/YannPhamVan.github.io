@@ -29,11 +29,11 @@ export default function HeroSection() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
           J'aide les entreprises financières et industrielles à exploiter leurs données pour{" "}
           <strong className="text-white/90">réduire le risque</strong>,{" "}
           <strong className="text-white/90">anticiper les dérives</strong> et{" "}
-          <strong className="text-white/90">augmenter la performance opérationnelle à l'échelle</strong>.
+          <strong className="text-white/90">améliorer la performance opérationnelle</strong>.
         </p>
 
         {/* Pillars */}
