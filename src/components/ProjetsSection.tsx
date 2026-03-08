@@ -90,6 +90,15 @@ export default function ProjetsSection() {
                 <h3 className="font-bold text-lg leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
+                {/* Context */}
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-3" style={{ color: "hsl(var(--performance-blue))" }}>
+                  Contexte
+                </p>
+                <p className="text-base text-muted-foreground leading-relaxed mb-2">{p.context}</p>
+                {/* Solution */}
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-2" style={{ color: "hsl(var(--performance-blue))" }}>
+                  Solution
+                </p>
                 <p className="text-base text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
 
