@@ -1,4 +1,5 @@
 import { ArrowRight, ShieldCheck, TrendingUp, Zap } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const pillars = [
   { icon: ShieldCheck, text: "Réduction du risque" },
@@ -7,6 +8,29 @@ const pillars = [
 ];
 
 export default function HeroSection() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    const targetId = href.replace("#", "");
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
   return (
     <section
       id="hero"
@@ -53,6 +77,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="inline-flex items-center justify-center gap-2 bg-perf-blue text-white font-semibold px-8 py-4 rounded-md hover:opacity-90 transition-opacity text-base"
           >
             Discuter de votre projet
@@ -60,6 +85,7 @@ export default function HeroSection() {
           </a>
           <a
             href="#projets"
+            onClick={(e) => handleNavClick(e, "#projets")}
             className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-medium px-8 py-4 rounded-md hover:bg-white/10 transition-colors text-base"
           >
             Voir les projets

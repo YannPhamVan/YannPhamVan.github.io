@@ -1,5 +1,5 @@
 import { Linkedin, Mail, Github } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const quickLinks = [
   { label: "Expertises", href: "#expertises" },
@@ -9,6 +9,29 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    const targetId = href.replace("#", "");
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
   return (
     <footer className="section-navy pt-14 pb-8 px-6">
       <div className="max-w-6xl mx-auto">
@@ -43,6 +66,7 @@ export default function Footer() {
               </a>
               <a
                 href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/10"
                 style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
                 aria-label="Email"
@@ -60,6 +84,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
+                    onClick={(e) => handleNavClick(e, l.href)}
                     className="text-sm transition-colors hover:text-white"
                     style={{ color: "hsl(var(--navy-foreground) / 0.55)" }}
                   >

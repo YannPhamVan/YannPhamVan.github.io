@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
   { label: "Expertises", href: "#expertises" },
@@ -11,6 +12,34 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMenuOpen(false);
+
+    const targetId = href.replace("#", "");
+
+    if (location.pathname !== "/") {
+      // If we are not on the homepage (e.g. mentions légales), redirect first then scroll
+      navigate("/");
+      // Wait for homepage to mount before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // If we are already on homepage, just scroll
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,7 +55,11 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo / Name */}
-        <a href="#hero" className="flex flex-col leading-tight">
+        <a 
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, "#hero")}
+          className="flex flex-col leading-tight"
+        >
           <span className="font-bold text-lg" style={{ color: "hsl(var(--navy))" }}>
             Yann Pham-Van
           </span>
@@ -41,6 +74,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-sm font-medium transition-colors hover:text-blue-700"
               style={{ color: "hsl(var(--surface-foreground))" }}
             >
@@ -49,6 +83,7 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="bg-perf-blue text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:opacity-90 transition-opacity"
           >
             Discuter de vos enjeux
@@ -72,17 +107,17 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-base font-medium py-2"
               style={{ color: "hsl(var(--surface-foreground))" }}
-              onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </a>
           ))}
           <a
             href="#contact"
+            onClick={(e) => handleNavClick(e, "#contact")}
             className="bg-perf-blue text-white text-base font-semibold px-5 py-3 rounded-md text-center hover:opacity-90 transition-opacity"
-            onClick={() => setMenuOpen(false)}
           >
             Discuter de vos enjeux
           </a>
