@@ -10,9 +10,9 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="section-navy min-h-screen flex flex-col justify-center pt-24 pb-20 px-6"
+      className="section-navy min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6"
     >
-      <div className="max-w-4xl mx-auto w-full text-center">
+      <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 text-sm text-white/70">
           <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "hsl(var(--performance-green))" }}></span>
@@ -29,11 +29,11 @@ export default function HeroSection() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
           J'aide les entreprises financières et industrielles à exploiter leurs données pour{" "}
           <strong className="text-white/90">réduire le risque</strong>,{" "}
           <strong className="text-white/90">anticiper les dérives</strong> et{" "}
-          <strong className="text-white/90">augmenter la performance opérationnelle à l'échelle</strong>.
+          <strong className="text-white/90">améliorer la performance opérationnelle</strong>.
         </p>
 
         {/* Pillars */}
