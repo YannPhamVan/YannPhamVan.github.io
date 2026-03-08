@@ -41,24 +41,38 @@ export default function PolitiqueConfidentialite() {
               <h2 className="text-xl font-bold mb-3" style={{ color: "hsl(var(--navy))" }}>Données collectées</h2>
               <p className="text-base text-muted-foreground leading-relaxed">
                 Ce site collecte uniquement les données que vous fournissez volontairement via le formulaire de contact :
-                nom, société, adresse email et message. Aucune autre donnée personnelle n'est collectée automatiquement.
-                Il n'y a pas de cookies de suivi, pas d'analytics comportemental et aucun outil de pistage tiers.
+                <strong className="text-foreground"> nom, adresse email et message</strong>. Aucune autre donnée personnelle
+                n'est collectée automatiquement. Il n'y a pas de cookies de suivi, pas d'analytics comportemental
+                et aucun outil de pistage tiers.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold mb-3" style={{ color: "hsl(var(--navy))" }}>Finalité du traitement</h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Les données transmises via le formulaire sont utilisées <strong>uniquement pour répondre à votre demande</strong> de
-                contact ou d'information sur les services proposés. Elles ne font l'objet d'aucun traitement commercial ou marketing.
+                Les données transmises via le formulaire sont utilisées{" "}
+                <strong>exclusivement pour répondre à votre message</strong> de contact ou d'information
+                sur les services proposés. Elles ne font l'objet d'aucun traitement commercial ou marketing.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-xl font-bold mb-3" style={{ color: "hsl(var(--navy))" }}>Sécurité et sous-traitant</h2>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Les données du formulaire sont transmises via <strong>HTTPS</strong> et traitées par{" "}
+                <strong>Formspree</strong> (formspree.io), service tiers spécialisé dans la gestion sécurisée des
+                formulaires de contact. Formspree agit en tant que sous-traitant et s'engage à traiter ces données
+                conformément au RGPD. Les données sont stockées de manière sécurisée et accessibles uniquement
+                au responsable du site.
               </p>
             </section>
 
             <section>
               <h2 className="text-xl font-bold mb-3" style={{ color: "hsl(var(--navy))" }}>Durée de conservation</h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Les données sont conservées uniquement le temps nécessaire au traitement de votre demande et aux
-                échanges qui en découlent, puis supprimées. Aucune base de données n'est constituée à partir des soumissions du formulaire.
+                Les données sont conservées uniquement le temps nécessaire pour répondre à votre demande
+                et aux échanges qui en découlent. Aucune base de données n'est constituée à des fins
+                commerciales ou de prospection.
               </p>
             </section>
 
@@ -67,7 +81,7 @@ export default function PolitiqueConfidentialite() {
               <p className="text-base text-muted-foreground leading-relaxed">
                 Vos données personnelles ne sont <strong>jamais vendues, louées ou partagées</strong> avec des tiers à des
                 fins commerciales ou autres. Elles restent strictement confidentielles et ne sont accessibles qu'au
-                responsable du site.
+                responsable du site, via Formspree.
               </p>
             </section>
 
@@ -82,9 +96,8 @@ export default function PolitiqueConfidentialite() {
             <section>
               <h2 className="text-xl font-bold mb-3" style={{ color: "hsl(var(--navy))" }}>Hébergement</h2>
               <p className="text-base text-muted-foreground leading-relaxed">
-                Ce site est hébergé par <strong>GitHub Pages</strong> (GitHub, Inc., 88 Colin P Kelly Jr St,
-                San Francisco, CA 94107, USA). Les données transmises via le formulaire de contact transitent par des
-                serveurs pouvant être situés aux États-Unis. GitHub Inc. est soumis au cadre du RGPD pour les
+                Ce site est hébergé par <strong>GitHub Pages</strong> (GitHub, Inc., 88 Colin P. Kelly Jr. Street,
+                San Francisco, CA 94107, USA). GitHub Inc. est soumis au cadre du RGPD pour les
                 utilisateurs européens.
               </p>
             </section>
@@ -103,8 +116,8 @@ export default function PolitiqueConfidentialite() {
                 <li>Droit à la portabilité des données</li>
               </ul>
               <p className="mt-3 text-base text-muted-foreground leading-relaxed">
-                Pour exercer ces droits, contactez-moi via le formulaire de contact du site ou à l'adresse email
-                indiquée dans les mentions légales. Vous avez également le droit d'introduire une réclamation auprès de la{" "}
+                Pour exercer ces droits, contactez-moi à l'adresse email indiquée ci-dessus. Vous avez également
+                le droit d'introduire une réclamation auprès de la{" "}
                 <a
                   href="https://www.cnil.fr"
                   target="_blank"
