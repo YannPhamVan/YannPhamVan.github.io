@@ -46,13 +46,13 @@ export default function ImpactSection() {
         <div className="text-center mb-16">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "hsl(var(--performance-green))" }}
+            style={{ color: "hsl(var(--performance-green-on-dark))" }}
           >
             Ce que vous gagnez concrètement
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-3xl mx-auto">
             Des modèles qui créent un{" "}
-            <span style={{ color: "hsl(var(--performance-green))" }}>
+            <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
               avantage compétitif mesurable
             </span>
           </h2>
@@ -80,7 +80,7 @@ export default function ImpactSection() {
                   className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
                 >
-                  <Icon size={22} style={{ color: "hsl(var(--performance-green))" }} />
+                  <Icon size={22} style={{ color: "hsl(var(--performance-green-on-dark))" }} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-base mb-2">{v.title}</h3>

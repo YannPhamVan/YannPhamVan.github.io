@@ -25,6 +25,7 @@ export default {
         "perf-green": {
           DEFAULT: "hsl(var(--performance-green))",
           foreground: "hsl(var(--performance-green-foreground))",
+          "on-dark": "hsl(var(--performance-green-on-dark))",
         },
         surface: {
           DEFAULT: "hsl(var(--surface))",
