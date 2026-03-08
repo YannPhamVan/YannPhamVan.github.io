@@ -19,7 +19,7 @@ export default function MentionsLegales() {
           <h1 className="text-3xl font-bold mb-2" style={{ color: "hsl(var(--navy))" }}>
             Mentions légales
           </h1>
-          <p className="text-sm text-muted-foreground mb-10">Dernière mise à jour : mars 2025</p>
+          <p className="text-sm text-muted-foreground mb-10">Dernière mise à jour : mars 2026</p>
 
           <div className="prose prose-slate max-w-none space-y-10">
             <section>
@@ -27,8 +27,8 @@ export default function MentionsLegales() {
               <div className="text-base text-muted-foreground leading-relaxed space-y-1">
                 <p><strong className="text-foreground">Nom :</strong> Yann Pham-Van</p>
                 <p><strong className="text-foreground">Statut :</strong> Data Scientist Freelance</p>
-                <p><strong className="text-foreground">Adresse professionnelle :</strong> 21800 Quetigny, France</p>
-                <p><strong className="text-foreground">Email professionnel :</strong>{" "}
+                <p><strong className="text-foreground">Adresse :</strong> 21800 Quetigny, France</p>
+                <p><strong className="text-foreground">Email :</strong>{" "}
                   <a
                     href="mailto:yann.pham-van+portfolio@gadz.org"
                     className="underline hover:opacity-80 transition-opacity"
@@ -36,6 +36,10 @@ export default function MentionsLegales() {
                   >
                     yann.pham-van+portfolio@gadz.org
                   </a>
+                </p>
+                <p className="mt-2 text-muted-foreground">
+                  Ce site a pour objet de présenter le portfolio professionnel de Yann Pham-Van, Data Scientist Freelance,
+                  et de permettre aux entreprises et décideurs intéressés de prendre contact.
                 </p>
               </div>
             </section>
@@ -52,7 +56,7 @@ export default function MentionsLegales() {
               <div className="text-base text-muted-foreground leading-relaxed space-y-1">
                 <p><strong className="text-foreground">Hébergeur :</strong> GitHub Pages</p>
                 <p><strong className="text-foreground">Société :</strong> GitHub, Inc.</p>
-                <p><strong className="text-foreground">Adresse :</strong> 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA</p>
+                <p><strong className="text-foreground">Adresse :</strong> 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA</p>
                 <p><strong className="text-foreground">Site :</strong>{" "}
                   <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" className="underline">
                     pages.github.com

@@ -2,16 +2,38 @@ import { useState } from "react";
 import { Send, Clock, Lock } from "lucide-react";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ nom: "", societe: "", email: "", message: "" });
+  const [form, setForm] = useState({ nom: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xgonvgaa", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ nom: form.nom, email: form.email, message: form.message }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        setError(data?.errors?.[0]?.message || "Une erreur est survenue. Veuillez réessayer.");
+      }
+    } catch {
+      setError("Impossible d'envoyer le message. Vérifiez votre connexion et réessayez.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -77,40 +99,24 @@ export default function ContactSection() {
                   Message envoyé !
                 </h3>
                 <p className="text-muted-foreground text-base">
-                  Merci pour votre message. Je vous contacterai dans les 24h.
+                  Merci ! Votre message a bien été envoyé. Je vous répondrai sous 24h.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-1.5" style={{ color: "hsl(var(--navy))" }}>
-                      Nom <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="nom"
-                      required
-                      value={form.nom}
-                      onChange={handleChange}
-                      placeholder="Jean Martin"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-1.5" style={{ color: "hsl(var(--navy))" }}>
-                      Société <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="societe"
-                      required
-                      value={form.societe}
-                      onChange={handleChange}
-                      placeholder="Votre entreprise"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5" style={{ color: "hsl(var(--navy))" }}>
+                    Nom <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="nom"
+                    required
+                    value={form.nom}
+                    onChange={handleChange}
+                    placeholder="Jean Martin"
+                    className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                  />
                 </div>
 
                 <div>
@@ -130,7 +136,7 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-sm font-medium mb-1.5" style={{ color: "hsl(var(--navy))" }}>
-                    Décrivez votre problématique <span className="text-red-500">*</span>
+                    Votre message <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -138,17 +144,34 @@ export default function ContactSection() {
                     rows={5}
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Contexte de votre projet, problématique principale, périmètre envisagé, délais…"
+                    placeholder="Décrivez votre contexte, votre problématique principale, le périmètre envisagé…"
                     className="w-full rounded-md border border-input bg-background px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition resize-none"
                   />
                 </div>
 
+                {error && (
+                  <p className="text-sm text-red-500 text-center">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-perf-blue text-white font-semibold py-3.5 px-6 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-base"
+                  disabled={isLoading}
+                  className="w-full bg-perf-blue text-white font-semibold py-3.5 px-6 rounded-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-base disabled:opacity-60"
                 >
-                  <Send size={16} />
-                  Échanger sur votre projet
+                  {isLoading ? (
+                    <span className="flex items-center gap-2">
+                      <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                      </svg>
+                      Envoi en cours…
+                    </span>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Envoyer mon message
+                    </>
+                  )}
                 </button>
 
                 <p className="text-sm text-center text-muted-foreground">
