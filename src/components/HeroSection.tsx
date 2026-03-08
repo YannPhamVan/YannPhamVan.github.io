@@ -10,9 +10,9 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="section-navy min-h-screen flex flex-col justify-center pt-24 pb-20 px-6"
+      className="section-navy min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6"
     >
-      <div className="max-w-4xl mx-auto w-full text-center">
+      <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 text-sm text-white/70">
           <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "hsl(var(--performance-green))" }}></span>
