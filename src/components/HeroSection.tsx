@@ -39,14 +39,14 @@ export default function HeroSection() {
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 border border-white/20 rounded-full px-4 py-1.5 mb-8 text-sm text-white/70">
-          <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "hsl(var(--performance-green))" }}></span>
+          <span className="w-2 h-2 rounded-full inline-block" style={{ backgroundColor: "hsl(var(--performance-green-on-dark))" }}></span>
           Data Scientist Freelance · Finance & Industrie
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
           Transformez vos données en{" "}
-          <span style={{ color: "hsl(var(--performance-green))" }}>
+          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             décisions stratégiques
           </span>{" "}
           mesurables
@@ -66,7 +66,7 @@ export default function HeroSection() {
             const Icon = p.icon;
             return (
               <div key={p.text} className="flex items-center gap-2">
-                <Icon size={18} className="flex-shrink-0" style={{ color: "hsl(var(--performance-green))" }} />
+                <Icon size={18} className="flex-shrink-0" style={{ color: "hsl(var(--performance-green-on-dark))" }} />
                 <span className="text-base text-white/80 font-medium">{p.text}</span>
               </div>
             );
