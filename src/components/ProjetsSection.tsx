@@ -5,35 +5,36 @@ const projects = [
     badge: "real",
     category: "Scoring & Risque",
     title: "Scoring crédit pour une fintech",
+    context: "Une fintech avait besoin d'évaluer automatiquement le risque de remboursement de chaque demande de crédit, sans dépendre de règles métier figées.",
     description:
-      "Modélisation et déploiement d'un score de remboursement permettant d'évaluer le risque d'une demande de crédit.",
+      "Développement et déploiement d'un modèle de scoring supervisé, exposé via une API REST et piloté depuis un dashboard interactif.",
     contributions: [
-      "Développement d'un modèle supervisé avec gestion du déséquilibre de classes",
-      "Optimisation du seuil métier pour la prise de décision",
-      "Suivi des performances avec MLflow",
-      "Détection de dérive des données avec Evidently",
-      "Déploiement d'une API FastAPI pour exposer le modèle",
-      "Dashboard Streamlit pour simuler des demandes de crédit",
+      "Modèle supervisé avec gestion du déséquilibre de classes",
+      "Optimisation du seuil de décision adapté au contexte métier",
+      "Suivi des performances et détection de dérive avec MLflow & Evidently",
+      "API FastAPI pour intégration dans les systèmes existants",
+      "Dashboard Streamlit pour simuler et explorer les décisions crédit",
     ],
-    objective: "Illustrer la mise en production complète d'un modèle de scoring.",
+    value: "Meilleure prise de décision crédit, intégration continue dans les outils métier, surveillance active du modèle en production.",
     stack: ["Python", "XGBoost", "FastAPI", "MLflow", "Evidently", "Streamlit", "Docker"],
   },
   {
     badge: "real",
     category: "MLOps",
     title: "Industrialisation d'un pipeline Machine Learning",
+    context: "Une équipe data souhaitait passer d'expérimentations isolées à un pipeline ML robuste, reproductible et déployable en production.",
     description:
-      "Mise en place d'un pipeline complet pour entraîner, versionner et déployer un modèle de prédiction.",
+      "Mise en place d'un pipeline complet automatisé, du traitement de la donnée jusqu'au monitoring du modèle déployé.",
     contributions: [
       "Orchestration du pipeline de données avec Prefect",
-      "Entraînement et gestion des versions de modèles avec MLflow",
-      "Mise en place de tests et validation de données",
-      "Déploiement d'une API FastAPI",
-      "Monitoring du modèle avec Evidently",
-      "Automatisation CI/CD via GitHub Actions",
-      "Préparation d'un déploiement cloud avec Terraform et LocalStack",
+      "Versionnement des modèles et suivi des expériences avec MLflow",
+      "Tests automatisés et validation de la qualité des données",
+      "API FastAPI pour exposer les prédictions",
+      "Monitoring de la dérive des données avec Evidently",
+      "CI/CD via GitHub Actions pour des livraisons fiables",
+      "Infrastructure cloud préparée avec Terraform et LocalStack",
     ],
-    objective: "Illustrer les bonnes pratiques d'industrialisation ML (MLOps).",
+    value: "Industrialisation fiable du cycle ML, automatisation des livraisons, traçabilité complète des expériences et des modèles.",
     stack: ["Python", "Prefect", "MLflow", "FastAPI", "Evidently", "GitHub Actions", "Terraform", "Docker"],
   },
 ];
@@ -89,6 +90,15 @@ export default function ProjetsSection() {
                 <h3 className="font-bold text-lg leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
+                {/* Context */}
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-3" style={{ color: "hsl(var(--performance-blue))" }}>
+                  Contexte
+                </p>
+                <p className="text-base text-muted-foreground leading-relaxed mb-2">{p.context}</p>
+                {/* Solution */}
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-2" style={{ color: "hsl(var(--performance-blue))" }}>
+                  Solution
+                </p>
                 <p className="text-base text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
 
@@ -110,15 +120,15 @@ export default function ProjetsSection() {
                 </ul>
               </div>
 
-              {/* Objective */}
+              {/* Value */}
               <div
                 className="mx-6 rounded-lg px-4 py-3 mb-4"
                 style={{ backgroundColor: "hsl(var(--surface))" }}
               >
                 <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
-                  Objectif
+                  Valeur apportée
                 </p>
-                <p className="text-base text-muted-foreground leading-relaxed">{p.objective}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{p.value}</p>
               </div>
 
               {/* Stack tags */}
