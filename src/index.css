@@ -17,7 +17,8 @@ All colors MUST be HSL.
     --performance-blue: 224 82% 48%;   /* #1D4ED8 */
     --performance-blue-foreground: 0 0% 100%;
 
-    --performance-green: 160 91% 30%;  /* #059669 */
+    --performance-green: 160 91% 24%;  /* darker for WCAG AA on light bg */
+    --performance-green-on-dark: 160 80% 42%; /* lighter for WCAG AA on navy bg */
     --performance-green-foreground: 0 0% 100%;
 
     --surface: 210 40% 96%;       /* #F1F5F9 */
