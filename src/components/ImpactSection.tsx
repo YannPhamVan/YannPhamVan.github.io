@@ -46,13 +46,13 @@ export default function ImpactSection() {
         <div className="text-center mb-16">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "hsl(var(--performance-green))" }}
+            style={{ color: "hsl(var(--performance-green-on-dark))" }}
           >
             Ce que vous gagnez concrètement
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-3xl mx-auto">
             Des modèles qui créent un{" "}
-            <span style={{ color: "hsl(var(--performance-green))" }}>
+            <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
               avantage compétitif mesurable
             </span>
           </h2>
