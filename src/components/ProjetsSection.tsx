@@ -111,15 +111,15 @@ export default function ProjetsSection() {
                 </ul>
               </div>
 
-              {/* Objective */}
+              {/* Value */}
               <div
                 className="mx-6 rounded-lg px-4 py-3 mb-4"
                 style={{ backgroundColor: "hsl(var(--surface))" }}
               >
                 <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
-                  Objectif
+                  Valeur apportée
                 </p>
-                <p className="text-base text-muted-foreground leading-relaxed">{p.objective}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{p.value}</p>
               </div>
 
               {/* Stack tags */}
