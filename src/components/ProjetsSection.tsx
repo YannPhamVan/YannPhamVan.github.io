@@ -1,44 +1,40 @@
-import { CheckCircle2, FlaskConical } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const projects = [
   {
     badge: "real",
     category: "Scoring & Risque",
-    title: "API de scoring crédit déployée en production",
-    context: "Établissement de crédit à la consommation — portefeuille de 50 000 dossiers/mois",
-    problem: "L'évaluation du risque reposait sur des règles statiques, générant trop de refus injustifiés et des défauts non anticipés.",
-    solution: "Modèle XGBoost calibré avec feature engineering comportemental, interprétabilité SHAP et exposition via API REST FastAPI dockerisée.",
-    impact: [
-      { label: "Réduction des défauts", value: "−35%" },
-      { label: "Précision du modèle (AUC)", value: "0.91" },
+    title: "Scoring crédit pour une fintech",
+    description:
+      "Modélisation et déploiement d'un score de remboursement permettant d'évaluer le risque d'une demande de crédit.",
+    contributions: [
+      "Développement d'un modèle supervisé avec gestion du déséquilibre de classes",
+      "Optimisation du seuil métier pour la prise de décision",
+      "Suivi des performances avec MLflow",
+      "Détection de dérive des données avec Evidently",
+      "Déploiement d'une API FastAPI pour exposer le modèle",
+      "Dashboard Streamlit pour simuler des demandes de crédit",
     ],
-    stack: ["Python", "XGBoost", "SHAP", "FastAPI", "Docker", "PostgreSQL"],
+    objective: "Illustrer la mise en production complète d'un modèle de scoring.",
+    stack: ["Python", "XGBoost", "FastAPI", "MLflow", "Evidently", "Streamlit", "Docker"],
   },
   {
     badge: "real",
-    category: "Détection d'anomalies",
-    title: "Système de détection d'anomalies financières",
-    context: "Groupe industriel — surveillance des transactions inter-entités en temps quasi-réel",
-    problem: "Les fraudes et irrégularités n'étaient détectées qu'après clôture comptable, avec un taux de faux positifs élevé paralysant les équipes.",
-    solution: "Pipeline hybride supervisé/non supervisé (Isolation Forest + LSTM) avec streaming Kafka et système d'alerte paramétrable par les métiers.",
-    impact: [
-      { label: "Fraudes détectées (rappel)", value: "+42%" },
-      { label: "Faux positifs réduits", value: "−60%" },
-    ],
-    stack: ["Python", "Isolation Forest", "LSTM", "Kafka", "Elasticsearch"],
-  },
-  {
-    badge: "demo",
     category: "MLOps",
-    title: "Pipeline ML industrialisé avec monitoring continu",
-    context: "Fintech — modèles de scoring en production avec supervision et retraining automatisé",
-    problem: "Les modèles dérivaient silencieusement sans détection, nécessitant des interventions manuelles coûteuses et des indisponibilités non planifiées.",
-    solution: "Mise en place de MLflow, pipeline CI/CD GitHub Actions, monitoring Grafana avec détection automatique du data drift et retraining déclenché par seuils.",
-    impact: [
-      { label: "Disponibilité du système", value: "99.8%" },
-      { label: "Temps de retraining", value: "< 2h" },
+    title: "Industrialisation d'un pipeline Machine Learning",
+    description:
+      "Mise en place d'un pipeline complet pour entraîner, versionner et déployer un modèle de prédiction.",
+    contributions: [
+      "Orchestration du pipeline de données avec Prefect",
+      "Entraînement et gestion des versions de modèles avec MLflow",
+      "Mise en place de tests et validation de données",
+      "Déploiement d'une API FastAPI",
+      "Monitoring du modèle avec Evidently",
+      "Automatisation CI/CD via GitHub Actions",
+      "Préparation d'un déploiement cloud avec Terraform et LocalStack",
     ],
-    stack: ["MLflow", "Airflow", "Docker", "Grafana", "GitHub Actions"],
+    objective: "Illustrer les bonnes pratiques d'industrialisation ML (MLOps).",
+    stack: ["Python", "Prefect", "MLflow", "FastAPI", "Evidently", "GitHub Actions", "Terraform", "Docker"],
   },
 ];
 
@@ -60,7 +56,7 @@ export default function ProjetsSection() {
         </div>
 
         {/* Project cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((p) => (
             <div
               key={p.title}
@@ -78,65 +74,51 @@ export default function ProjetsSection() {
                   >
                     {p.category}
                   </span>
-                  {p.badge === "real" ? (
-                    <span
-                      className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-                      style={{
-                        backgroundColor: "hsl(var(--performance-green) / 0.12)",
-                        color: "hsl(var(--performance-green))",
-                      }}
-                    >
-                      <CheckCircle2 size={12} />
-                      Projet réel
-                    </span>
-                  ) : (
-                    <span
-                      className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0"
-                      style={{
-                        backgroundColor: "hsl(var(--performance-blue) / 0.08)",
-                        color: "hsl(var(--performance-blue))",
-                      }}
-                    >
-                      <FlaskConical size={12} />
-                      Démo avancée
-                    </span>
-                  )}
+                  <span
+                    className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 border"
+                    style={{
+                      borderColor: "hsl(var(--performance-green))",
+                      color: "hsl(var(--performance-green))",
+                      backgroundColor: "transparent",
+                    }}
+                  >
+                    <CheckCircle2 size={12} />
+                    Projet réel
+                  </span>
                 </div>
-                <h3 className="font-bold text-base leading-snug mb-1.5" style={{ color: "hsl(var(--navy))" }}>
+                <h3 className="font-bold text-lg leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
-                <p className="text-base text-muted-foreground">{p.context}</p>
+                <p className="text-base text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
 
-              {/* Problem / Solution */}
-              <div className="px-6 mb-4 flex-1 space-y-3">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
-                    Problème métier
-                  </p>
-                  <p className="text-base text-muted-foreground leading-relaxed">{p.problem}</p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
-                    Solution
-                  </p>
-                  <p className="text-base text-muted-foreground leading-relaxed">{p.solution}</p>
-                </div>
+              {/* Contributions */}
+              <div className="px-6 pb-4 flex-1">
+                <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "hsl(var(--navy))" }}>
+                  Principales contributions
+                </p>
+                <ul className="space-y-1.5">
+                  {p.contributions.map((c) => (
+                    <li key={c} className="flex items-start gap-2 text-base text-muted-foreground">
+                      <span
+                        className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ backgroundColor: "hsl(var(--performance-blue))" }}
+                      />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* Metrics */}
+              {/* Objective */}
               <div
-                className="mx-6 rounded-lg px-4 py-3 grid grid-cols-2 gap-3 mb-4"
+                className="mx-6 rounded-lg px-4 py-3 mb-4"
                 style={{ backgroundColor: "hsl(var(--surface))" }}
               >
-                {p.impact.map((m) => (
-                  <div key={m.label}>
-                    <p className="text-lg font-bold" style={{ color: "hsl(var(--performance-green))" }}>
-                      {m.value}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-tight">{m.label}</p>
-                  </div>
-                ))}
+                <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "hsl(var(--navy))" }}>
+                  Objectif
+                </p>
+                <p className="text-base text-muted-foreground leading-relaxed">{p.objective}</p>
               </div>
 
               {/* Stack tags */}

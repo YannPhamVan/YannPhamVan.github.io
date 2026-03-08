@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Expertises", href: "#expertises" },
@@ -48,16 +48,6 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://github.com/YannPhamVan"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="transition-colors hover:opacity-70"
-            style={{ color: "hsl(var(--surface-foreground))" }}
-          >
-            <Github size={20} />
-          </a>
-          <a
             href="#contact"
             className="bg-perf-blue text-white text-sm font-semibold px-5 py-2.5 rounded-md hover:opacity-90 transition-opacity"
           >
@@ -89,17 +79,6 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="https://github.com/YannPhamVan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-base font-medium py-2"
-            style={{ color: "hsl(var(--surface-foreground))" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            <Github size={18} />
-            GitHub
-          </a>
           <a
             href="#contact"
             className="bg-perf-blue text-white text-base font-semibold px-5 py-3 rounded-md text-center hover:opacity-90 transition-opacity"
