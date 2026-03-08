@@ -80,7 +80,7 @@ export default function ImpactSection() {
                   className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
                 >
-                  <Icon size={22} style={{ color: "hsl(var(--performance-green))" }} />
+                  <Icon size={22} style={{ color: "hsl(var(--performance-green-on-dark))" }} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-white text-base mb-2">{v.title}</h3>

@@ -88,7 +88,7 @@ export default function Footer() {
         {/* Bottom */}
         <div
           className="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
-          style={{ borderColor: "hsl(var(--navy-foreground) / 0.1)", color: "hsl(var(--navy-foreground) / 0.4)" }}
+          style={{ borderColor: "hsl(var(--navy-foreground) / 0.1)", color: "hsl(var(--navy-foreground) / 0.65)" }}
         >
           <p>© {new Date().getFullYear()} Yann Pham-Van — Data Scientist Freelance. Tous droits réservés.</p>
           <div className="flex gap-4">
