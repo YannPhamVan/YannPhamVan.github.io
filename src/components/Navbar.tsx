@@ -54,18 +54,26 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo / Name */}
+        {/* Logo / Name + Photo */}
         <a 
           href="#hero" 
           onClick={(e) => handleNavClick(e, "#hero")}
-          className="flex flex-col leading-tight"
+          className="flex items-center gap-3 leading-tight"
         >
-          <span className="font-bold text-lg" style={{ color: "hsl(var(--navy))" }}>
-            Yann Pham-Van
-          </span>
-          <span className="text-xs font-medium" style={{ color: "hsl(var(--performance-blue))" }}>
-            Data Scientist · Scoring & Anomalies
-          </span>
+          <img
+            src="/yann-pham-van.webp"
+            alt="Yann Pham-Van, Data Scientist Freelance"
+            loading="lazy"
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover flex-shrink-0"
+          />
+          <div className="flex flex-col">
+            <span className="font-bold text-lg" style={{ color: "hsl(var(--navy))" }}>
+              Yann Pham-Van
+            </span>
+            <span className="text-xs font-medium" style={{ color: "hsl(var(--performance-blue))" }}>
+              Data Scientist · Scoring &amp; Anomalies
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
