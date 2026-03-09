@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Github } from "lucide-react";
 
 const projects = [
   {
@@ -17,6 +17,7 @@ const projects = [
     ],
     value: "Meilleure prise de décision crédit, intégration continue dans les outils métier, surveillance active du modèle en production.",
     stack: ["Python", "XGBoost", "FastAPI", "MLflow", "Evidently", "Streamlit", "Docker"],
+    repo: "https://github.com/YannPhamVan/Projet7-Implementez_un_modele_de_scoring",
   },
   {
     badge: "real",
@@ -36,6 +37,7 @@ const projects = [
     ],
     value: "Industrialisation fiable du cycle ML, automatisation des livraisons, traçabilité complète des expériences et des modèles.",
     stack: ["Python", "Prefect", "MLflow", "FastAPI", "Evidently", "GitHub Actions", "Terraform", "Docker"],
+    repo: "https://github.com/YannPhamVan/MLOps-ETF-PEA",
   },
 ];
 
@@ -131,9 +133,9 @@ export default function ProjetsSection() {
                 <p className="text-base text-muted-foreground leading-relaxed">{p.value}</p>
               </div>
 
-              {/* Stack tags */}
-              <div className="px-6 pb-6">
-                <div className="flex flex-wrap gap-1.5">
+              {/* Stack tags and optional Repo Link */}
+              <div className="px-6 pb-6 mt-auto">
+                <div className="flex flex-wrap gap-1.5 mb-4">
                   {p.stack.map((s) => (
                     <span
                       key={s}
@@ -147,6 +149,18 @@ export default function ProjetsSection() {
                     </span>
                   ))}
                 </div>
+                {p.repo && (
+                  <a
+                    href={p.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-black"
+                    style={{ color: "hsl(var(--muted-foreground))" }}
+                  >
+                    <Github size={16} />
+                    Voir le code
+                  </a>
+                )}
               </div>
             </div>
           ))}

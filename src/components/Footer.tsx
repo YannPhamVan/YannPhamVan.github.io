@@ -65,6 +65,18 @@ export default function Footer() {
                 <Github size={17} className="text-white" />
               </a>
               <a
+                href="https://www.malt.fr/profile/yannphamvan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/10"
+                style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
+                aria-label="Malt"
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white w-[17px] h-[17px]">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12.0001 21.0538L16.2731 16.7806C16.9038 16.1501 17.5855 16.1966 18.2721 16.8833C18.9587 17.5701 19.5543 18.2566 18.9236 18.8872L14.6506 23.1604C14.0199 23.7911 13.3382 23.7431 12.6515 23.0565C12.3168 22.7218 12.1584 22.3872 12.0001 21.0538ZM11.9996 11.2343L16.2731 6.96106C16.904 6.3302 17.5856 6.37691 18.2721 7.06371C18.9587 7.75051 19.5544 8.43719 18.9234 9.06821L14.6501 13.3414C14.0193 13.9723 13.3377 13.9255 12.6511 13.2387C12.3164 12.904 12.158 12.5694 11.9996 11.2343ZM11.9996 2.94635L7.72622 7.21953C7.09544 7.85023 6.41372 7.80344 5.72727 7.11663C5.04084 6.42984 4.44521 5.74325 5.07606 5.11269L9.34947 0.839504C9.98024 0.208803 10.662 0.255598 11.3484 0.942398C11.6831 1.27712 11.8415 1.61199 11.9996 2.94635ZM11.9996 12.7656L7.72661 17.0387C7.0959 17.6695 6.41417 17.6226 5.72771 16.9358C5.04126 16.249 4.44565 15.5623 5.07636 14.9315L9.34935 10.6583C9.98006 10.0275 10.6618 10.0743 11.3482 10.7611C11.6829 11.0958 11.8413 11.4305 11.9996 12.7656Z" fill="currentColor"/>
+                </svg>
+              </a>
+              <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors hover:bg-white/10"

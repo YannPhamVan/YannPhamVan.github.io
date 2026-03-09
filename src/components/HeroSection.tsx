@@ -45,19 +45,16 @@ export default function HeroSection() {
 
         {/* Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-          Transformez vos données en{" "}
+          Anticipez les risques et détectez les{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
-            décisions stratégiques
+            opportunités
           </span>{" "}
-          mesurables
+          dans vos données.
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-          J'aide les entreprises financières et industrielles à exploiter leurs données pour{" "}
-          <strong className="text-white/90">réduire le risque</strong>,{" "}
-          <strong className="text-white/90">anticiper les dérives</strong> et{" "}
-          <strong className="text-white/90">améliorer la performance opérationnelle</strong>.
+          Data Scientist freelance spécialisé en détection d’anomalies, maintenance prédictive et scoring des risques. J’aide les entreprises à exploiter leurs données pour améliorer leurs décisions grâce au Machine Learning.
         </p>
 
         {/* Pillars */}
