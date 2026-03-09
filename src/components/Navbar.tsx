@@ -63,7 +63,9 @@ export default function Navbar() {
           <img
             src="/yann-pham-van.webp"
             alt="Yann Pham-Van, Data Scientist Freelance"
-            loading="lazy"
+            fetchPriority="high"
+            width="40"
+            height="40"
             className="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover flex-shrink-0"
             style={{ border: "1.5px solid hsl(var(--performance-blue))" }}
           />
