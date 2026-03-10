@@ -62,6 +62,26 @@ export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: 
                 <p className="text-[11px] text-slate-500 italic leading-relaxed text-center">
                     Simulez le score de probabilité pour voir l'impact sur la décision finale.
                 </p>
+
+                {/* Business Explanation Box */}
+                <div className="mt-6 p-4 bg-white/50 border border-slate-200 rounded-lg text-[12px] text-slate-600 leading-relaxed shadow-sm">
+                    <p className="font-bold mb-2 text-navy/80 uppercase tracking-wider text-[10px]">
+                        Comprendre le seuil de décision
+                    </p>
+                    <p className="mb-2">
+                        Dans un système de scoring réel, le seuil de décision est choisi pour
+                        équilibrer deux types de risque :
+                    </p>
+                    <ul className="list-disc pl-4 space-y-1 mb-2">
+                        <li>accorder un crédit à un client qui fera défaut</li>
+                        <li>refuser un bon client par excès de prudence</li>
+                    </ul>
+                    <p>
+                        Le coût d’un défaut étant généralement beaucoup plus élevé,
+                        les institutions financières ajustent ce seuil pour trouver le bon
+                        équilibre entre risque et opportunité.
+                    </p>
+                </div>
             </div>
         </div>
     );
