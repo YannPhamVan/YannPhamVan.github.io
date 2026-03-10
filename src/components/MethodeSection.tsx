@@ -52,7 +52,7 @@ export default function MethodeSection() {
             Un cycle complet, de la donnée à la valeur
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-base md:text-lg">
-            Une approche structurée qui garantit la fiabilité des livrables et la création de valeur dès les premières semaines.
+            Une approche pragmatique héritée de la culture ingénieur : je ne livre pas seulement du code, mais des solutions prêtes à l'emploi qui créent de la valeur réelle sur le terrain.
           </p>
         </div>
 

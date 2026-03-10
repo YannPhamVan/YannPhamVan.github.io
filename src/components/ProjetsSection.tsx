@@ -18,6 +18,7 @@ const projects = [
     badge: "real",
     category: "Scoring & Risque",
     title: "Scoring crédit pour une fintech",
+    hook: "Sécurisez vos décisions de crédit avec un modèle de scoring précis et explicable.",
     context: "Une fintech avait besoin d'évaluer automatiquement le risque de remboursement de chaque demande de crédit, sans dépendre de règles métier figées.",
     description:
       "Aide à la décision crédit via un modèle supervisé et une fonction de coût métier pondérée pour sécuriser la rentabilité bancaire.",
@@ -37,6 +38,7 @@ const projects = [
     badge: "real",
     category: "MLOps",
     title: "Industrialisation d'un pipeline Machine Learning",
+    hook: "Passez de l'expérimentation à la production avec un pipeline ML industriel et monitoré.",
     context: "Une équipe data souhaitait passer d'expérimentations isolées à un pipeline ML robuste, reproductible et déployable en production.",
     description:
       "Architecture MLOps complète automatisant le cycle de vie d'un modèle financier, de l'ingestion à la surveillance des dérives.",
@@ -108,6 +110,10 @@ export default function ProjetsSection() {
                 <h3 className="font-bold text-lg leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
+                {/* Hook */}
+                <p className="text-sm font-bold mb-3 italic" style={{ color: "hsl(var(--navy))" }}>
+                  "{p.hook}"
+                </p>
                 {/* Context */}
                 <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-3" style={{ color: "hsl(var(--performance-blue))" }}>
                   Contexte

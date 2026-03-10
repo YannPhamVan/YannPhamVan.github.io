@@ -54,15 +54,15 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-          Spécialisé en maintenance prédictive et scoring des risques via la{" "}
+          Ingénieur de formation, j'aide les entreprises à transformer leurs données en{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
-            détection d’anomalies
-          </span>,{" "}
-          je vous aide à exploiter vos données pour{" "}
+            outils de décision fiables
+          </span>.{" "}
+          J'allie rigueur technique via le MLOps et le scoring à un{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
-            améliorer vos décisions
+            accompagnement humain
           </span>{" "}
-          grâce au Machine Learning.
+          pour garantir l'adoption de l'IA par vos métiers.
         </p>
 
         {/* Pillars */}
