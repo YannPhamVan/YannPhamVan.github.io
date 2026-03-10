@@ -42,9 +42,24 @@ const steps = [
 
 export default function MethodeSection() {
   const [activeStep, setActiveStep] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const stepRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      // Clear active step when switching to desktop or handle as hover
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -64,7 +79,7 @@ export default function MethodeSection() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   return (
     <section id="methode" className="bg-white py-24 px-6">
@@ -97,6 +112,8 @@ export default function MethodeSection() {
                   key={step.number} 
                   ref={(el) => (stepRefs.current[step.number] = el)}
                   data-step={step.number}
+                  onMouseEnter={() => !isMobile && setActiveStep(step.number)}
+                  onMouseLeave={() => !isMobile && setActiveStep(null)}
                   className="flex flex-col items-start lg:items-center lg:text-center relative transition-opacity duration-300"
                   style={{ opacity: activeStep ? (isActive ? 1 : 0.4) : 1 }}
                 >
@@ -107,7 +124,7 @@ export default function MethodeSection() {
                     }`}
                     style={{ 
                       borderColor: isActive ? "hsl(var(--performance-blue))" : "hsl(var(--border))",
-                      backgroundColor: isActive ? "white" : "white"
+                      backgroundColor: "white"
                     }}
                   >
                     <Icon 

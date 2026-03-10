@@ -55,11 +55,11 @@ export default function HeroSection() {
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
           Ingénieur de formation, je vous aide à transformer vos{" "}
-          <span style={{ color: "hsl(var(--performance-green-on-dark))", fontWeight: "bold" }}>
+          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             données
           </span>{" "}
           en outils de décision fiables. J'allie rigueur technique via le MLOps et le scoring à un{" "}
-          <span style={{ color: "hsl(var(--performance-green-on-dark))", fontWeight: "bold" }}>
+          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             accompagnement humain
           </span>{" "}
           pour garantir l'adoption de l'IA par vos métiers.
