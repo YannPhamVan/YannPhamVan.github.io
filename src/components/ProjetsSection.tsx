@@ -1,6 +1,7 @@
 import { CheckCircle2, Github, Play } from "lucide-react";
 import { useState } from "react";
 import ScoringGauge from "./ScoringGauge";
+import MLOpsPipeline from "./MLOpsPipeline";
 
 const projects = [
   {
@@ -10,7 +11,7 @@ const projects = [
     title: "Scoring crédit pour une fintech",
     context: "Une fintech avait besoin d'évaluer automatiquement le risque de remboursement de chaque demande de crédit, sans dépendre de règles métier figées.",
     description:
-      "Développement et déploiement d'un modèle de scoring supervisé, exposé via une API REST et piloté depuis un dashboard interactif.",
+      "Aide à la décision crédit via un modèle supervisé et une fonction de coût métier pondérée pour sécuriser la rentabilité bancaire.",
     contributions: [
       "Modèle supervisé avec gestion du déséquilibre de classes",
       "Optimisation du seuil de décision adapté au contexte métier",
@@ -29,7 +30,7 @@ const projects = [
     title: "Industrialisation d'un pipeline Machine Learning",
     context: "Une équipe data souhaitait passer d'expérimentations isolées à un pipeline ML robuste, reproductible et déployable en production.",
     description:
-      "Mise en place d'un pipeline complet automatisé, du traitement de la donnée jusqu'au monitoring du modèle déployé.",
+      "Architecture MLOps complète automatisant le cycle de vie d'un modèle financier, de l'ingestion à la surveillance des dérives.",
     contributions: [
       "Orchestration du pipeline de données avec Prefect",
       "Versionnement des modèles et suivi des expériences avec MLflow",
@@ -110,7 +111,7 @@ export default function ProjetsSection() {
                 <p className="text-base text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
 
-              {/* Demo Section (only for scoring) */}
+              {/* Demo Section (Scoring) */}
               {p.id === "scoring" && (
                 <div className="px-6 pb-4">
                   <button
@@ -125,6 +126,26 @@ export default function ProjetsSection() {
                   {activeDemo === "scoring" && (
                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
                       <ScoringGauge initialScore={0.32} threshold={0.52} />
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Demo Section (MLOps) */}
+              {p.id === "mlops" && (
+                <div className="px-6 pb-4 text-left">
+                  <button
+                    onClick={() => setActiveDemo(activeDemo === "mlops" ? null : "mlops")}
+                    className="group inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-performance-blue"
+                    style={{ color: activeDemo === "mlops" ? "hsl(var(--performance-blue))" : "hsl(var(--navy))" }}
+                  >
+                    <Play size={14} className={`transition-transform duration-300 ${activeDemo === "mlops" ? "rotate-90 fill-current" : ""}`} />
+                    {activeDemo === "mlops" ? "Masquer le pipeline interactif" : "Voir le pipeline interactif (Live SIM)"}
+                  </button>
+
+                  {activeDemo === "mlops" && (
+                    <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
+                      <MLOpsPipeline />
                     </div>
                   )}
                 </div>
