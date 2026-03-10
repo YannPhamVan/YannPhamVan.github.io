@@ -58,7 +58,7 @@ const pipelineStages = [
 
 // --- Sub-components (Memoized) ---
 
-const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelect, onHover }: any) => {
+const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelect, onHover, align = "center" }: any) => {
     const Icon = stage.icon;
     const isMonitor = stage.id === "monitor";
     const showWarning = isMonitor && isDrifted;
@@ -72,12 +72,12 @@ const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelec
                         onMouseEnter={() => onHover(stage.id)}
                         onMouseLeave={() => onHover(null)}
                         className={`w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-200 border-2 cursor-pointer relative ${isSelected
-                                ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg ring-4 ring-performance-blue/20"
-                                : showWarning
-                                    ? "bg-white border-orange-500 text-orange-500 animate-pulse"
-                                    : isHovered
-                                        ? "bg-white border-performance-blue text-performance-blue scale-110 shadow-md"
-                                        : "bg-white border-slate-200 text-slate-400"
+                            ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg ring-4 ring-performance-blue/20"
+                            : showWarning
+                                ? "bg-white border-orange-500 text-orange-500 animate-pulse"
+                                : isHovered
+                                    ? "bg-white border-performance-blue text-performance-blue scale-110 shadow-md"
+                                    : "bg-white border-slate-200 text-slate-400"
                             }`}
                     >
                         <Icon size={18} />
@@ -86,7 +86,12 @@ const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelec
                         )}
                     </button>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-[180px] md:max-w-[220px] p-2 md:p-3 text-xs leading-relaxed shadow-xl border-slate-100">
+                <TooltipContent
+                    side="top"
+                    align={align}
+                    sideOffset={8}
+                    className="max-w-[180px] md:max-w-[220px] p-2 md:p-3 text-xs leading-relaxed shadow-xl border-slate-100 bg-white"
+                >
                     <p className="font-bold mb-1 text-performance-blue uppercase tracking-wider text-[10px] md:text-xs">{stage.title}</p>
                     <p className="text-slate-600 italic mb-1 hidden md:block">{stage.businessValue}</p>
                     <p className="hidden md:flex">{stage.description}</p>
@@ -222,7 +227,7 @@ export default function MLOpsPipeline() {
                 {/* Visual Pipeline */}
                 <div className="flex items-center justify-between mb-10 relative px-2">
                     <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
-                    {pipelineStages.map((stage) => (
+                    {pipelineStages.map((stage, index) => (
                         <StageIcon
                             key={stage.id}
                             stage={stage}
@@ -231,6 +236,7 @@ export default function MLOpsPipeline() {
                             isDrifted={isDrifted}
                             onSelect={handleSelectStage}
                             onHover={handleHoverStage}
+                            align={index === 0 ? "start" : index === pipelineStages.length - 1 ? "end" : "center"}
                         />
                     ))}
                 </div>
