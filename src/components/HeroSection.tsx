@@ -58,9 +58,9 @@ export default function HeroSection() {
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             détection d’anomalies
           </span>,{" "}
-          j’aide les entreprises à exploiter leurs données pour{" "}
+          je vous aide à exploiter vos données pour{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
-            améliorer leurs décisions
+            améliorer vos décisions
           </span>{" "}
           grâce au Machine Learning.
         </p>
