@@ -1,7 +1,16 @@
-import { CheckCircle2, Github, Play } from "lucide-react";
-import { useState } from "react";
-import ScoringGauge from "./ScoringGauge";
-import MLOpsPipeline from "./MLOpsPipeline";
+import { CheckCircle2, Github, Play, Loader2 } from "lucide-react";
+import { useState, lazy, Suspense } from "react";
+
+// Lazy loading of interactive components to reduce initial bundle size (Core Web Vitals)
+const ScoringGauge = lazy(() => import("./ScoringGauge"));
+const MLOpsPipeline = lazy(() => import("./MLOpsPipeline"));
+
+const LoadingPlaceholder = () => (
+  <div className="flex items-center justify-center p-8 bg-slate-50 rounded-xl border border-slate-100 animate-pulse">
+    <Loader2 className="w-6 h-6 text-performance-blue animate-spin mr-2" />
+    <span className="text-sm font-medium text-slate-400">Chargement de la démo...</span>
+  </div>
+);
 
 const projects = [
   {
@@ -125,7 +134,9 @@ export default function ProjetsSection() {
 
                   {activeDemo === "scoring" && (
                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
-                      <ScoringGauge initialScore={0.32} threshold={0.52} />
+                      <Suspense fallback={<LoadingPlaceholder />}>
+                        <ScoringGauge initialScore={0.32} threshold={0.52} />
+                      </Suspense>
                     </div>
                   )}
                 </div>
@@ -145,7 +156,9 @@ export default function ProjetsSection() {
 
                   {activeDemo === "mlops" && (
                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
-                      <MLOpsPipeline />
+                      <Suspense fallback={<LoadingPlaceholder />}>
+                        <MLOpsPipeline />
+                      </Suspense>
                     </div>
                   )}
                 </div>
