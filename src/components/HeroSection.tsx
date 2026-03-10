@@ -57,8 +57,8 @@ export default function HeroSection() {
           Data Scientist freelance spécialisé en maintenance prédictive et scoring des risques via la{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             détection d’anomalies
-          </span>.{" "}
-          J’aide les entreprises à exploiter leurs données pour{" "}
+          </span>,{" "}
+          j’aide les entreprises à exploiter leurs données pour{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             améliorer leurs décisions
           </span>{" "}
