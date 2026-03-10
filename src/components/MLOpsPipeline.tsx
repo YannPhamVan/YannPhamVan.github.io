@@ -59,9 +59,12 @@ const pipelineStages = [
 ];
 
 export default function MLOpsPipeline() {
-    const [activeStage, setActiveStage] = useState<string | null>(null);
+    const [selectedStage, setSelectedStage] = useState<string | null>(null);
+    const [hoveredStage, setHoveredStage] = useState<string | null>(null);
     const [threshold, setThreshold] = useState(7); // Objectif de rendement PEA (%)
     const [probSuccess, setProbSuccess] = useState(68);
+
+    const isDrifted = probSuccess <= 50;
 
     // Simulation simple de l'impact du seuil sur la probabilité
     const handleThresholdChange = (val: number[]) => {
@@ -73,6 +76,8 @@ export default function MLOpsPipeline() {
         setProbSuccess(Math.round(calculatedProb));
     };
 
+    const activeStageId = hoveredStage || selectedStage;
+
     return (
         <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 mt-6 shadow-inner text-left">
             <div className="flex items-center justify-between mb-8">
@@ -80,27 +85,42 @@ export default function MLOpsPipeline() {
             </div>
 
             {/* Visual Pipeline */}
-            <div className="flex items-center justify-between mb-10 relative">
+            <div className="flex items-center justify-between mb-10 relative px-2">
                 {/* Connection lines */}
                 <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
 
                 <TooltipProvider>
-                    {pipelineStages.map((stage, index) => {
+                    {pipelineStages.map((stage) => {
                         const Icon = stage.icon;
-                        const isActive = activeStage === stage.id;
+                        const isSelected = selectedStage === stage.id;
+                        const isHovered = hoveredStage === stage.id;
+                        const isActive = isSelected || isHovered;
+
+                        // Monitoring stage is special: it turns orange if drift is detected in the simulator
+                        const isMonitor = stage.id === "monitor";
+                        const showWarning = isMonitor && isDrifted;
+
                         return (
                             <div key={stage.id} className="relative z-10 flex flex-col items-center">
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <button
-                                            onClick={() => setActiveStage(isActive ? null : stage.id)}
-                                            onMouseEnter={() => setActiveStage(stage.id)}
-                                            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2 cursor-pointer ${isActive
-                                                ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg"
-                                                : "bg-white border-slate-200 text-slate-400 hover:border-performance-blue hover:text-performance-blue hover:scale-110 hover:shadow-md"
+                                            onClick={() => setSelectedStage(isSelected ? null : stage.id)}
+                                            onMouseEnter={() => setHoveredStage(stage.id)}
+                                            onMouseLeave={() => setHoveredStage(null)}
+                                            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2 cursor-pointer relative ${isSelected
+                                                    ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg ring-4 ring-performance-blue/20"
+                                                    : showWarning
+                                                        ? "bg-white border-orange-500 text-orange-500 animate-pulse"
+                                                        : isHovered
+                                                            ? "bg-white border-performance-blue text-performance-blue scale-110 shadow-md"
+                                                            : "bg-white border-slate-200 text-slate-400"
                                                 }`}
                                         >
                                             <Icon size={18} />
+                                            {showWarning && (
+                                                <span className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full border-2 border-white" />
+                                            )}
                                         </button>
                                     </TooltipTrigger>
                                     <TooltipContent side="top" className="max-w-[200px] p-3 text-xs leading-relaxed">
@@ -119,39 +139,55 @@ export default function MLOpsPipeline() {
             </div>
 
             {/* Stage Detail Box */}
-            <div className="min-h-[100px] mb-8 p-4 bg-white border border-slate-100 rounded-lg shadow-sm transition-all animate-in fade-in slide-in-from-top-1">
-                {activeStage ? (
-                    <div>
+            <div className="min-h-[110px] mb-8 p-4 bg-white border border-slate-100 rounded-lg shadow-sm transition-all duration-300 ring-1 ring-black/5 overflow-hidden">
+                {activeStageId ? (
+                    <div className="animate-in fade-in slide-in-from-left-2 duration-300">
                         <div className="flex items-center gap-2 mb-2">
                             <ShieldCheck size={16} className="text-performance-green" />
-                            <p className="text-xs font-bold text-navy uppercase">{pipelineStages.find(s => s.id === activeStage)?.businessValue}</p>
+                            <p className="text-xs font-bold text-navy uppercase">
+                                {pipelineStages.find(s => s.id === activeStageId)?.businessValue}
+                                {selectedStage === activeStageId && <span className="ml-2 text-[10px] text-performance-blue lowercase italic font-normal">(épinglé)</span>}
+                            </p>
                         </div>
                         <p className="text-sm text-slate-600 leading-relaxed">
-                            {pipelineStages.find(s => s.id === activeStage)?.guarantee}
+                            {pipelineStages.find(s => s.id === activeStageId)?.guarantee}
                         </p>
                     </div>
                 ) : (
-                    <div className="flex items-center justify-center h-full text-slate-400 text-sm text-center">
-                        <p><Search size={14} className="inline mr-2" />Cliquez sur un stage pour voir sa valeur métier et ce qu'il garantit</p>
+                    <div className="flex items-center justify-center h-full text-slate-400 text-sm text-center py-4">
+                        <p className="animate-pulse">
+                            <Search size={14} className="inline mr-2" />
+                            Cliquez sur une étape pour fixer les détails métier
+                        </p>
                     </div>
                 )}
             </div>
 
             {/* Mini Simulation */}
-            <div className="pt-6 border-t border-slate-200">
-                <h5 className="text-xs font-bold text-navy uppercase mb-2 flex items-center gap-2">
-                    <Zap size={14} className="text-performance-blue" />
-                    Simulateur de Performance ETF
-                </h5>
-                <p className="text-[10px] text-slate-500 mb-4 italic">
-                    Plus votre objectif de rendement est ambitieux, plus la probabilité de succès calculée baisse (simulation).
+            <div className="pt-6 border-t border-slate-200 relative">
+                <div className="flex items-center justify-between mb-4">
+                    <h5 className="text-xs font-bold text-navy uppercase flex items-center gap-2">
+                        <Zap size={14} className="text-performance-blue" />
+                        Aide à la Décision (Live SIM)
+                    </h5>
+                    {isDrifted && (
+                        <Badge variant="outline" className="border-orange-500 text-orange-600 text-[10px] bg-orange-50 animate-bounce">
+                            Drift détecté
+                        </Badge>
+                    )}
+                </div>
+
+                <p className="text-[10px] text-slate-500 mb-6 italic leading-snug">
+                    Modifiez vos objectifs de rendement : le pipeline MLOps réévalue instantanément la faisabilité et surveille la "dérive" du modèle.
                 </p>
 
                 <div className="space-y-6">
                     <div>
                         <div className="flex justify-between text-xs font-medium text-slate-500 mb-2">
-                            <span>Objectif de rendement : {threshold}% / an</span>
-                            <span className="font-bold text-navy">Probabilité ML : {probSuccess}%</span>
+                            <span>Objectif de rendement : <span className="text-navy font-bold">{threshold}% / an</span></span>
+                            <span className={`transition-colors font-bold ${isDrifted ? "text-orange-600" : "text-performance-green"}`}>
+                                {probSuccess}% de réussite
+                            </span>
                         </div>
                         <Slider
                             value={[threshold]}
@@ -163,26 +199,27 @@ export default function MLOpsPipeline() {
                         />
                     </div>
 
-                    <div className={`p-3 rounded-lg border flex items-center justify-between ${probSuccess > 50 ? "bg-green-50 border-green-100" : "bg-orange-50 border-orange-100"}`}>
-                        <div>
-                            <p className="text-[10px] uppercase font-bold text-slate-400 mb-0.5">Statut Pipeline</p>
-                            <p className="text-xs font-bold text-navy">
-                                {probSuccess > 50 ? "Modèle Validé - Conforme" : "Modèle Alerte - Drift Suspecté"}
-                            </p>
+                    <div className={`p-4 rounded-lg border flex items-center justify-between transition-colors duration-500 ${!isDrifted ? "bg-green-50 border-green-100" : "bg-orange-50 border-orange-100"}`}>
+                        <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded-full ${!isDrifted ? "bg-performance-green/10 text-performance-green" : "bg-orange-100 text-orange-600"}`}>
+                                <Activity size={16} />
+                            </div>
+                            <div>
+                                <p className="text-[10px] uppercase font-bold text-slate-400 mb-0.5">Statut Production</p>
+                                <p className={`text-xs font-bold ${!isDrifted ? "text-navy" : "text-orange-600"}`}>
+                                    {!isDrifted ? "Modèle Optimal & Robuste" : "Alerte : Limites du modèle atteintes"}
+                                </p>
+                            </div>
                         </div>
                         <Badge
-                            className={`shadow-none ${probSuccess > 50
-                                ? "bg-performance-green text-white hover:bg-performance-green/90"
-                                : "bg-orange-500 text-white hover:bg-orange-500/90"
+                            className={`shadow-none font-bold ${!isDrifted
+                                ? "bg-performance-green text-white"
+                                : "bg-orange-500 text-white"
                                 }`}
                         >
-                            {probSuccess > 50 ? "Prêt" : "Action Req."}
+                            {!isDrifted ? "OK" : "CHECK"}
                         </Badge>
                     </div>
-
-                    <p className="text-[11px] text-slate-500 italic leading-relaxed">
-                        Un changement d'objectif client déclenche automatiquement une ré-évaluation du risque via les pipelines Prefect et Evidently.
-                    </p>
                 </div>
             </div>
         </div>
