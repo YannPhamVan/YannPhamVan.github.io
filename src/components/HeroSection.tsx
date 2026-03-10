@@ -54,7 +54,16 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-          Data Scientist freelance spécialisé en détection d’anomalies, maintenance prédictive et scoring des risques. J’aide les entreprises à exploiter leurs données pour améliorer leurs décisions grâce au Machine Learning.
+          Data Scientist freelance spécialisé en maintenance prédictive et scoring des risques via la{" "}
+          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
+            détection d’anomalies
+          </span>.
+          <br />
+          J’aide les entreprises à exploiter leurs données pour{" "}
+          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
+            améliorer leurs décisions
+          </span>{" "}
+          grâce au Machine Learning.
         </p>
 
         {/* Pillars */}
