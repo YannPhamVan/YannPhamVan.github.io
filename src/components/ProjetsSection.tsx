@@ -1,7 +1,10 @@
-import { CheckCircle2, Github } from "lucide-react";
+import { CheckCircle2, Github, Play } from "lucide-react";
+import { useState } from "react";
+import ScoringGauge from "./ScoringGauge";
 
 const projects = [
   {
+    id: "scoring",
     badge: "real",
     category: "Scoring & Risque",
     title: "Scoring crédit pour une fintech",
@@ -20,6 +23,7 @@ const projects = [
     repo: "https://github.com/YannPhamVan/Projet7-Implementez_un_modele_de_scoring",
   },
   {
+    id: "mlops",
     badge: "real",
     category: "MLOps",
     title: "Industrialisation d'un pipeline Machine Learning",
@@ -42,6 +46,8 @@ const projects = [
 ];
 
 export default function ProjetsSection() {
+  const [activeDemo, setActiveDemo] = useState<string | null>(null);
+
   return (
     <section id="projets" className="bg-surface py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -63,7 +69,7 @@ export default function ProjetsSection() {
           {projects.map((p) => (
             <div
               key={p.title}
-              className="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden"
+              className="bg-white rounded-xl border border-border shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden"
             >
               {/* Top bar */}
               <div className="px-6 pt-5 pb-4">
@@ -103,6 +109,26 @@ export default function ProjetsSection() {
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
+
+              {/* Demo Section (only for scoring) */}
+              {p.id === "scoring" && (
+                <div className="px-6 pb-4">
+                  <button
+                    onClick={() => setActiveDemo(activeDemo === "scoring" ? null : "scoring")}
+                    className="group inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-performance-blue"
+                    style={{ color: activeDemo === "scoring" ? "hsl(var(--performance-blue))" : "hsl(var(--navy))" }}
+                  >
+                    <Play size={14} className={`transition-transform duration-300 ${activeDemo === "scoring" ? "rotate-90 fill-current" : ""}`} />
+                    {activeDemo === "scoring" ? "Masquer la démo interactive" : "Voir la démo interactive (Live SIM)"}
+                  </button>
+
+                  {activeDemo === "scoring" && (
+                    <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
+                      <ScoringGauge initialScore={0.32} threshold={0.48} />
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Contributions */}
               <div className="px-6 pb-4 flex-1">
