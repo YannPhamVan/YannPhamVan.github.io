@@ -107,13 +107,13 @@ export default function ProjetsSection() {
                     Projet réel
                   </span>
                 </div>
+                {/* Hook */}
+                <p className="text-sm font-bold mb-2 italic" style={{ color: "hsl(var(--navy))" }}>
+                  "{p.hook}"
+                </p>
                 <h3 className="font-bold text-lg leading-snug mb-2" style={{ color: "hsl(var(--navy))" }}>
                   {p.title}
                 </h3>
-                {/* Hook */}
-                <p className="text-sm font-bold mb-3 italic" style={{ color: "hsl(var(--navy))" }}>
-                  "{p.hook}"
-                </p>
                 {/* Context */}
                 <p className="text-xs font-semibold uppercase tracking-wider mb-1 mt-3" style={{ color: "hsl(var(--performance-blue))" }}>
                   Contexte

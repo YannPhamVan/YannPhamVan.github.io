@@ -1,4 +1,5 @@
 import { Building2, Database, BrainCircuit, FlaskConical, Rocket, Activity } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
 
 const steps = [
   {
@@ -40,6 +41,31 @@ const steps = [
 ];
 
 export default function MethodeSection() {
+  const [activeStep, setActiveStep] = useState<string | null>(null);
+  const stepRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            setActiveStep(entry.target.getAttribute("data-step"));
+          }
+        });
+      },
+      {
+        rootMargin: "-20% 0px -20% 0px",
+        threshold: 0.5,
+      }
+    );
+
+    Object.values(stepRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="methode" className="bg-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -64,26 +90,43 @@ export default function MethodeSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-4">
             {steps.map((step) => {
               const Icon = step.icon;
+              const isActive = activeStep === step.number;
+              
               return (
-                <div key={step.number} className="flex flex-col items-start lg:items-center lg:text-center relative">
+                <div 
+                  key={step.number} 
+                  ref={(el) => (stepRefs.current[step.number] = el)}
+                  data-step={step.number}
+                  className="flex flex-col items-start lg:items-center lg:text-center relative transition-opacity duration-300"
+                  style={{ opacity: activeStep ? (isActive ? 1 : 0.4) : 1 }}
+                >
                   {/* Icon bubble */}
                   <div
-                    className="relative z-10 w-16 h-16 rounded-full flex items-center justify-center mb-4 border-2 bg-white flex-shrink-0"
-                    style={{ borderColor: "hsl(var(--performance-blue))" }}
+                    className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center mb-4 border-2 bg-white flex-shrink-0 transition-all duration-500 ${
+                      isActive ? "scale-110 shadow-[0_0_20px_rgba(37,99,235,0.2)]" : ""
+                    }`}
+                    style={{ 
+                      borderColor: isActive ? "hsl(var(--performance-blue))" : "hsl(var(--border))",
+                      backgroundColor: isActive ? "white" : "white"
+                    }}
                   >
-                    <Icon size={24} style={{ color: "hsl(var(--performance-blue))" }} />
+                    <Icon 
+                      size={24} 
+                      className={isActive ? "animate-in zoom-in-50 duration-300" : ""}
+                      style={{ color: "hsl(var(--performance-blue))" }} 
+                    />
                   </div>
 
                   {/* Step number */}
                   <span
-                    className="text-xs font-bold mb-1.5"
+                    className={`text-xs font-bold mb-1.5 transition-colors duration-300 ${isActive ? "opacity-100" : "opacity-70"}`}
                     style={{ color: "hsl(var(--performance-blue))" }}
                   >
                     Étape {step.number}
                   </span>
 
                   <h3
-                    className="font-semibold text-base mb-1.5 leading-snug"
+                    className={`font-semibold text-base mb-1.5 leading-snug transition-colors duration-300 ${isActive ? "translate-y-[-2px]" : ""}`}
                     style={{ color: "hsl(var(--navy))" }}
                   >
                     {step.title}

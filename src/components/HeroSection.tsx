@@ -2,9 +2,9 @@ import { ArrowRight, ShieldCheck, TrendingUp, Zap } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const pillars = [
-  { icon: ShieldCheck, text: "Réduction du risque" },
-  { icon: TrendingUp, text: "Optimisation des coûts" },
-  { icon: Zap, text: "Meilleure anticipation" },
+  { icon: ShieldCheck, text: "Réduisez les risques" },
+  { icon: TrendingUp, text: "Optimisez vos coûts" },
+  { icon: Zap, text: "Anticipez mieux" },
 ];
 
 export default function HeroSection() {
@@ -54,12 +54,12 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-          Ingénieur de formation, je vous aide à transformer vos données en{" "}
-          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
-            outils de décision fiables
-          </span>.{" "}
-          J'allie rigueur technique via le MLOps et le scoring à un{" "}
-          <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
+          Ingénieur de formation, je vous aide à transformer vos{" "}
+          <span style={{ color: "hsl(var(--performance-green-on-dark))", fontWeight: "bold" }}>
+            données
+          </span>{" "}
+          en outils de décision fiables. J'allie rigueur technique via le MLOps et le scoring à un{" "}
+          <span style={{ color: "hsl(var(--performance-green-on-dark))", fontWeight: "bold" }}>
             accompagnement humain
           </span>{" "}
           pour garantir l'adoption de l'IA par vos métiers.
