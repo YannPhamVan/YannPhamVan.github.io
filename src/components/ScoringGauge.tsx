@@ -73,13 +73,12 @@ export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: 
                         équilibrer deux types de risque :
                     </p>
                     <ul className="list-disc pl-4 space-y-1 mb-2">
-                        <li>accorder un crédit à un client qui fera défaut</li>
+                        <li>accorder un crédit à un client qui fera défaut <strong>(coût ~10x plus élevé)</strong></li>
                         <li>refuser un bon client par excès de prudence</li>
                     </ul>
                     <p>
-                        Le coût d’un défaut étant généralement beaucoup plus élevé,
-                        les institutions financières ajustent ce seuil pour trouver le bon
-                        équilibre entre risque et opportunité.
+                        Cette asymétrie de coût oblige les institutions financières à ajuster ce seuil pour trouver le bon
+                        équilibre entre sécurité et opportunité.
                     </p>
                 </div>
             </div>
