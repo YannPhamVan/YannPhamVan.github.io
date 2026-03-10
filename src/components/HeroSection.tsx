@@ -54,7 +54,7 @@ export default function HeroSection() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-          Ingénieur de formation, j'aide les entreprises à transformer leurs données en{" "}
+          Ingénieur de formation, je vous aide à transformer vos données en{" "}
           <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
             outils de décision fiables
           </span>.{" "}
