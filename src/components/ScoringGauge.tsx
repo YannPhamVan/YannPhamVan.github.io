@@ -12,13 +12,8 @@ export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: 
     const [score, setScore] = useState(initialScore);
     const isAccepted = score < threshold;
 
-    // Calcul du "coût métier" simulé
-    // Dans le projet, FN (Mauvais prédit Bon) coûte 10x plus cher que FP (Bon prédit Mauvais)
-    // On simule ici un indicateur de confiance/coût simple
-    const businessCostRisk = score > threshold ? (score - threshold) * 10 : 0;
-
     return (
-        <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 mt-6 shadow-inner">
+        <div className="bg-slate-50 rounded-xl p-6 border border-slate-200 mt-6 shadow-inner text-left">
             <div className="flex items-center justify-between mb-6">
                 <h4 className="text-sm font-bold text-navy uppercase tracking-tight">Simulateur de Décision</h4>
                 <Badge
@@ -53,7 +48,7 @@ export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: 
                 <div>
                     <div className="flex justify-between text-xs font-medium text-slate-500 mb-2">
                         <span>Probabilité de défaut : {(score * 100).toFixed(1)}%</span>
-                        <span>Seuil de risque : {(threshold * 100).toFixed(0)}%</span>
+                        <span>Seuil de décision : {(threshold * 100).toFixed(1)}%</span>
                     </div>
                     <Slider
                         value={[score * 100]}
@@ -64,24 +59,8 @@ export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: 
                     />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-2">
-                    <div className="p-3 bg-white rounded-lg border border-slate-100">
-                        <p className="text-[10px] uppercase font-bold text-slate-400 mb-1">Impact Financier</p>
-                        <p className="text-sm font-semibold text-navy">
-                            {isAccepted ? "Revenu généré" : "Risque écarté"}
-                        </p>
-                    </div>
-                    <div className="p-3 bg-white rounded-lg border border-slate-100">
-                        <p className="text-[10px] uppercase font-bold text-slate-400 mb-1">Coût d'Incertitude</p>
-                        <p className={`text-sm font-semibold ${businessCostRisk > 5 ? 'text-red-600' : 'text-slate-600'}`}>
-                            {businessCostRisk.toFixed(1)} pts
-                        </p>
-                    </div>
-                </div>
-
-                <p className="text-[11px] text-slate-500 italic leading-relaxed">
-                    <AlertCircle size={12} className="inline mr-1 mb-0.5" />
-                    La fonction de coût métier pondère les pertes 10x plus que les manques à gagner pour sécuriser la rentabilité.
+                <p className="text-[11px] text-slate-500 italic leading-relaxed text-center">
+                    Simulez le score de probabilité pour voir l'impact sur la décision finale.
                 </p>
             </div>
         </div>
