@@ -95,9 +95,9 @@ export default function MLOpsPipeline() {
                                         <button
                                             onClick={() => setActiveStage(isActive ? null : stage.id)}
                                             onMouseEnter={() => setActiveStage(stage.id)}
-                                            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2 ${isActive
-                                                    ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg"
-                                                    : "bg-white border-slate-200 text-slate-400 hover:border-performance-blue hover:text-performance-blue"
+                                            className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 border-2 cursor-pointer ${isActive
+                                                ? "bg-performance-blue border-performance-blue text-white scale-110 shadow-lg"
+                                                : "bg-white border-slate-200 text-slate-400 hover:border-performance-blue hover:text-performance-blue hover:scale-110 hover:shadow-md"
                                                 }`}
                                         >
                                             <Icon size={18} />
@@ -131,18 +131,21 @@ export default function MLOpsPipeline() {
                         </p>
                     </div>
                 ) : (
-                    <div className="flex items-center justify-center h-full text-slate-400 text-sm">
-                        <p><Search size={14} className="inline mr-2" />Survolez ou cliquez sur une étape pour voir sa valeur métier</p>
+                    <div className="flex items-center justify-center h-full text-slate-400 text-sm text-center">
+                        <p><Search size={14} className="inline mr-2" />Cliquez sur un stage pour voir sa valeur métier et ce qu'il garantit</p>
                     </div>
                 )}
             </div>
 
             {/* Mini Simulation */}
             <div className="pt-6 border-t border-slate-200">
-                <h5 className="text-xs font-bold text-navy uppercase mb-4 flex items-center gap-2">
+                <h5 className="text-xs font-bold text-navy uppercase mb-2 flex items-center gap-2">
                     <Zap size={14} className="text-performance-blue" />
                     Simulateur de Performance ETF
                 </h5>
+                <p className="text-[10px] text-slate-500 mb-4 italic">
+                    Plus votre objectif de rendement est ambitieux, plus la probabilité de succès calculée baisse (simulation).
+                </p>
 
                 <div className="space-y-6">
                     <div>
@@ -167,7 +170,12 @@ export default function MLOpsPipeline() {
                                 {probSuccess > 50 ? "Modèle Validé - Conforme" : "Modèle Alerte - Drift Suspecté"}
                             </p>
                         </div>
-                        <Badge className={probSuccess > 50 ? "bg-green-500" : "bg-orange-500"}>
+                        <Badge
+                            className={`shadow-none ${probSuccess > 50
+                                ? "bg-performance-green text-white hover:bg-performance-green/90"
+                                : "bg-orange-500 text-white hover:bg-orange-500/90"
+                                }`}
+                        >
                             {probSuccess > 50 ? "Prêt" : "Action Req."}
                         </Badge>
                     </div>
@@ -176,18 +184,6 @@ export default function MLOpsPipeline() {
                         Un changement d'objectif client déclenche automatiquement une ré-évaluation du risque via les pipelines Prefect et Evidently.
                     </p>
                 </div>
-            </div>
-
-            <div className="mt-6 flex justify-center">
-                <a
-                    href="https://github.com/YannPhamVan/MLOps-ETF-PEA"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-navy transition-colors"
-                >
-                    <Github size={14} />
-                    Parcourir l'architecture sur GitHub
-                </a>
             </div>
         </div>
     );
