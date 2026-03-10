@@ -8,7 +8,7 @@ interface ScoringGaugeProps {
     threshold?: number;
 }
 
-export default function ScoringGauge({ initialScore = 0.32, threshold = 0.5 }: ScoringGaugeProps) {
+export default function ScoringGauge({ initialScore = 0.32, threshold = 0.52 }: ScoringGaugeProps) {
     const [score, setScore] = useState(initialScore);
     const isAccepted = score < threshold;
 

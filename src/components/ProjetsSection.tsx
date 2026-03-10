@@ -124,7 +124,7 @@ export default function ProjetsSection() {
 
                   {activeDemo === "scoring" && (
                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-500">
-                      <ScoringGauge initialScore={0.32} threshold={0.48} />
+                      <ScoringGauge initialScore={0.32} threshold={0.52} />
                     </div>
                   )}
                 </div>
