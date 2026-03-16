@@ -40,23 +40,23 @@ export default function ImpactSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section-navy py-24 px-6">
+    <section ref={sectionRef} className="bg-surface py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "hsl(var(--performance-green-on-dark))" }}
+            style={{ color: "hsl(var(--performance-blue))" }}
           >
             Ce que vous gagnez concrètement
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 max-w-3xl mx-auto">
             Des modèles qui créent un{" "}
-            <span style={{ color: "hsl(var(--performance-green-on-dark))" }}>
+            <span style={{ color: "hsl(var(--performance-blue))" }}>
               avantage compétitif mesurable
             </span>
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto text-base">
+          <p className="text-muted-foreground max-w-xl mx-auto text-base">
             Chaque engagement est orienté vers un résultat business concret, pas seulement une performance technique.
           </p>
         </div>
@@ -68,23 +68,22 @@ export default function ImpactSection() {
             return (
               <div
                 key={v.title}
-                className={`flex flex-col items-start gap-4 p-6 rounded-xl border border-white/10 transition-all duration-700 ${
+                className={`flex flex-col items-start gap-4 p-6 rounded-xl border border-border bg-white shadow-sm hover:shadow-md transition-all duration-700 ${
                   visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                 }`}
                 style={{
                   transitionDelay: `${i * 120}ms`,
-                  backgroundColor: "hsl(var(--performance-blue) / 0.1)",
                 }}
               >
                 <div
                   className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: "hsl(var(--performance-blue) / 0.25)" }}
+                  style={{ backgroundColor: "hsl(var(--surface))" }}
                 >
-                  <Icon size={22} style={{ color: "hsl(var(--performance-green-on-dark))" }} />
+                  <Icon size={22} style={{ color: "hsl(var(--performance-blue))" }} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white text-base mb-2">{v.title}</h3>
-                  <p className="text-base text-white/65 leading-relaxed">{v.desc}</p>
+                  <h3 className="font-semibold text-navy text-base mb-2">{v.title}</h3>
+                  <p className="text-base text-muted-foreground leading-relaxed">{v.desc}</p>
                 </div>
               </div>
             );

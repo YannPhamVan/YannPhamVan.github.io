@@ -37,7 +37,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="bg-surface py-24 px-6">
+    <section id="contact" className="bg-white py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           {/* Left — copy */}

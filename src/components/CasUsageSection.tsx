@@ -30,7 +30,7 @@ const usecases = [
 
 export default function CasUsageSection() {
   return (
-    <section id="usecases" className="bg-surface py-24 px-6 border-t border-border/50">
+    <section id="usecases" className="bg-white py-24 px-6 border-t border-border/50">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">

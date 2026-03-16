@@ -50,7 +50,7 @@ const expertises = [
 
 export default function ExpertisesSection() {
   return (
-    <section id="expertises" className="bg-white py-24 px-6">
+    <section id="expertises" className="bg-surface py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-14">
