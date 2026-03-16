@@ -6,7 +6,7 @@ const testimonials = [
     author: "Aurore A.",
     role: "Dirigeante",
     company: "ELITE BEES",
-    date: "16 septembre 2025",
+    date: "septembre 2025",
     initials: "AA",
   },
   {
@@ -14,7 +14,7 @@ const testimonials = [
     author: "Aurore A.",
     role: "Dirigeante",
     company: "ELITE BEES",
-    date: "17 janvier 2025",
+    date: "janvier 2025",
     initials: "AA",
   },
   {
@@ -22,7 +22,7 @@ const testimonials = [
     author: "Zied J.",
     role: "Consultant freelance",
     company: "",
-    date: "30 janvier 2024",
+    date: "janvier 2024",
     initials: "ZJ",
   },
   {
@@ -30,8 +30,32 @@ const testimonials = [
     author: "Aurélien M.",
     role: "ML Engineer",
     company: "Arval BNP Paribas",
-    date: "21 décembre 2023",
+    date: "décembre 2023",
     initials: "AM",
+  },
+  {
+    text: "Yann a géré avec succès un projet Big Data dans le cloud. Le code est fonctionnel, les opérations parallélisées avec PySpark et le déploiement cloud parfaitement maîtrisé. La démonstration et la présentation étaient claires et convaincantes.",
+    author: "Dan S.",
+    role: "Data & AI Manager",
+    company: "Accenture",
+    date: "novembre 2023",
+    initials: "DS",
+  },
+  {
+    text: "Projet complexe de clustering exécuté avec rigueur. Yann a su produire des livrables clairs et analytiques, avec une interprétation précise des clusters. La présentation était professionnelle, démontrant sa capacité à contextualiser les résultats pour des décisions métier.",
+    author: "Alexandre G.",
+    role: "Senior Technical Consultant Data / IA / NLP",
+    company: "NORMA (Freelance)",
+    date: "juin 2023",
+    initials: "AG",
+  },
+  {
+    text: "Yann a livré un projet complet et parfaitement documenté. Le notebook et les analyses statistiques sont clairs, reproductibles et pertinents pour la sélection des pays candidats. La présentation était structurée et dynamique, facilitant la compréhension des conclusions.",
+    author: "Amosse E.",
+    role: "Freelance",
+    company: "",
+    date: "avril 2023",
+    initials: "AE",
   },
 ];
 
