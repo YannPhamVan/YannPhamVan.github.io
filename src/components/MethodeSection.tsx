@@ -105,7 +105,7 @@ export default function MethodeSection() {
                   data-step={step.number}
                   onMouseEnter={() => !isMobile && setActiveStep(step.number)}
                   onMouseLeave={() => !isMobile && setActiveStep(null)}
-                  className={`flex flex-col items-start lg:items-center lg:text-center relative transition-transform duration-300`}
+                  className={`flex flex-col items-start lg:items-center lg:text-center relative transition-transform duration-300 rounded-2xl`}
                   style={{ transform: isActive ? "scale(1.05)" : "scale(1)", boxShadow: isActive ? "0 0 20px rgba(37,99,235,0.2)" : "none" }}
                 >
                   {/* Icon bubble */}
