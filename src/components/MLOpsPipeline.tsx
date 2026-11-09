@@ -56,9 +56,21 @@ const pipelineStages = [
     }
 ];
 
+type PipelineStage = (typeof pipelineStages)[number];
+
 // --- Sub-components (Memoized) ---
 
-const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelect, onHover, align = "center" }: any) => {
+interface StageIconProps {
+    stage: PipelineStage;
+    isSelected: boolean;
+    isHovered: boolean;
+    isDrifted: boolean;
+    onSelect: (id: string | null) => void;
+    onHover: (id: string | null) => void;
+    align?: "start" | "center" | "end";
+}
+
+const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelect, onHover, align = "center" }: StageIconProps) => {
     const Icon = stage.icon;
     const isMonitor = stage.id === "monitor";
     const showWarning = isMonitor && isDrifted;
@@ -105,7 +117,12 @@ const StageIcon = React.memo(({ stage, isSelected, isHovered, isDrifted, onSelec
     );
 });
 
-const StageDetailBox = React.memo(({ activeStageId, selectedStageId }: any) => {
+interface StageDetailBoxProps {
+    activeStageId: string | null;
+    selectedStageId: string | null;
+}
+
+const StageDetailBox = React.memo(({ activeStageId, selectedStageId }: StageDetailBoxProps) => {
     const stage = useMemo(() => pipelineStages.find(s => s.id === activeStageId), [activeStageId]);
 
     return (
@@ -135,7 +152,13 @@ const StageDetailBox = React.memo(({ activeStageId, selectedStageId }: any) => {
     );
 });
 
-const MiniSimulator = React.memo(({ threshold, probSuccess, onThresholdChange }: any) => {
+interface MiniSimulatorProps {
+    threshold: number;
+    probSuccess: number;
+    onThresholdChange: (value: number[]) => void;
+}
+
+const MiniSimulator = React.memo(({ threshold, probSuccess, onThresholdChange }: MiniSimulatorProps) => {
     const isDrifted = useMemo(() => probSuccess <= 50, [probSuccess]);
 
     return (

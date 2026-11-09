@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import VideoPresentationSection from "@/components/VideoPresentationSection";
 const ProblematiquesSection = lazy(() => import("@/components/ProblematiquesSection"));
 const ExpertisesSection = lazy(() => import("@/components/ExpertisesSection"));
 const CasUsageSection = lazy(() => import("@/components/CasUsageSection"));
@@ -17,6 +18,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <VideoPresentationSection />
         <ImpactSection />
         <CredibiliteSection />
         <ProblematiquesSection />
